@@ -1,34 +1,51 @@
 # 视频大脑-产品官网
-## Setup
+## 安装
 
-Make sure to install dependencies:
+确保安装依赖：
 
 ```bash
 # npm
 npm install
 ```
 
-## Development Server
+## 开发服务器
 
-Start the development server on `http://localhost:3000`:
+在 `http://localhost:3000` 启动开发服务器：
 
 ```bash
 # npm
 npm run dev
 ```
 
-## Production
+## 生产环境
 
-Build the application for production:
+构建生产环境应用：
 
 ```bash
-# npm
-npm run build
+make pushx
 ```
 
-Locally preview production build:
+本地预览生产环境构建：
 
 ```bash
 # npm
 npm run preview
 ```
+
+# 开发过程中的QA
+## 1.如何替换首页的视频
+
+在/brain-official-website/public/video 中替换视频，如果视频过大，使用https://handbrake.fr/进行压缩替换
+
+## 2.如何发板上线
+
+使用
+
+```bash
+make pushx
+```
+然后，复制最终的镜像到1panel中的容器粘贴
+
+## 3.打包上线后显示502
+
+这是因为打包上线后的内网服务器ip地址，和代理转发到的ip不一致导致的
