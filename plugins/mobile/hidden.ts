@@ -1,6 +1,5 @@
 /**
  * @description 该命令用于隐藏一些在 768px 宽度下的元素
- * @author FluffyChi-Xing
  */
 
 import { DeviceSizeEnum, getDeviceSize } from '~/plugins/mobile/adaptH1';

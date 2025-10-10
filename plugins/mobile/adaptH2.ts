@@ -1,6 +1,5 @@
 /**
  * @description 用于适配移动端下的次级标题
- * @author FluffyChi-Xing
  */
 import { getDeviceSize } from '~/plugins/mobile/adaptH1';
 import { DeviceSizeEnum } from '~/plugins/mobile/adaptH1';

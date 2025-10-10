@@ -1,6 +1,5 @@
 /**
  * @description 这个文件定义了一批用于处理移动端适配的自定义 directives
- * @author FluffyChi-Xing
  */
 
 import adaptH1 from '~/plugins/mobile/adaptH1';

@@ -82,10 +82,6 @@ export default defineNuxtConfig({
           tagPosition: 'head',
         },
         {
-          src: 'https://hm.baidu.com/hm.js?3753ed44e9d8ce682930122fdf63237e',
-          async: true,
-        },
-        {
           type: 'text/javascript',
           innerHTML: `(function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

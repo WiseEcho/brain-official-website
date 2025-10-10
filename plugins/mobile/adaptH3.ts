@@ -1,6 +1,5 @@
 /**
  * @description 用于适配再次一级的文字内容，默认 pc端 1.0rem, 移动端默认 0.5rem
- * @author FluffyChi-Xing
  */
 
 import { DeviceSizeEnum, getDeviceSize } from '~/plugins/mobile/adaptH1';

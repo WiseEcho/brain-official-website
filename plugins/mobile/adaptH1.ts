@@ -1,8 +1,6 @@
 /**
  *
  * @description 移动端适配相关自定义指令
- * @author FluffyChi-Xing
- * @description 格式规范:
  * v-mobile-h1: h1标签的适配 后面可以插入指定的字号，默认在移动端的字号为 1.5rem 在 pc 端为 3rem
  * v-mobile-h2: h2标签的适配 默认在移动端的字号为 1 rem 在 pc 端为 1.5rem
  */
