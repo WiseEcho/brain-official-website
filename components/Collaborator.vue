@@ -30,35 +30,35 @@
 
   type customCard = Partial<customInfo>[];
   const collaborators: string[] = [
-    '/home/images/collaborators/aliyun.png',
-    '/home/images/collaborators/baidu.png',
-    '/home/images/collaborators/bytedangce.png',
-    '/home/images/collaborators/changjiang.png',
-    '/home/images/collaborators/douyin.png',
-    '/home/images/collaborators/huawei.png',
-    '/home/images/collaborators/kuaishou.png',
-    '/home/images/collaborators/muyumu.png',
-    '/home/images/collaborators/qiniu.png',
-    '/home/images/collaborators/rednote.png',
-    '/home/images/collaborators/tencent.svg',
-    '/home/images/collaborators/tianyi.png',
+    '/images/collaborators/aliyun.png',
+    '/images/collaborators/baidu.png',
+    '/images/collaborators/bytedangce.png',
+    '/images/collaborators/changjiang.png',
+    '/images/collaborators/douyin.png',
+    '/images/collaborators/huawei.png',
+    '/images/collaborators/kuaishou.png',
+    '/images/collaborators/muyumu.png',
+    '/images/collaborators/qiniu.png',
+    '/images/collaborators/rednote.png',
+    '/images/collaborators/tencent.svg',
+    '/images/collaborators/tianyi.png',
   ];
   const customs: customCard = [
     {
-      poster: '/home/images/custom/custom-1.png',
+      poster: '/images/custom/custom-1.png',
       desc:
         '在兴趣电商日益严苛的素材需求下，内部团队的协作成本和制作开销水涨船高。视频大脑的出现，正是解决这一难题的关键。\n' +
         '通过建立专属的产品素材库，视频大脑让剪辑人员能够快速复用素材，减少了重复拍摄的工作量。这样，摄像师能够专注于创作更多精品素材，剪辑团队也能高效找到所需素材，大幅提升了出片速度和整体效率。而投放团队，借助视频大脑的批量计划搭建功能，精准投放的效率也得到了质的飞跃。',
       brand: '芊小白',
       sponsor: '总经理',
-      brandLogo: '/home/images/custom/logo/brand1-logo.svg',
+      brandLogo: '/images/custom/logo/brand1-logo.svg',
     },
     {
-      poster: '/home/images/custom/custom-2.png',
+      poster: '/images/custom/custom-2.png',
       desc: '视频大脑的引入，带来显著变化：一是高效协作：素材共享与批注功能，甲方修改意见清晰可见，修改版本减少50%。二是周期缩短：从拍摄到投流的周期大幅压缩，提升响应速度。三是GMV提升：投放效率提升，直接推动GMV增长。四是自动化考核：团队考核数据自动生成，节省大量人工时间，提升战斗力。视频大脑助力代运营团队提升执行效率、优化投放流程、快速响应市场需求，为企业主创造更多价值。',
       brand: '木与木',
       sponsor: '创始人',
-      brandLogo: '/home/images/custom/logo/brand2-logo.svg',
+      brandLogo: '/images/custom/logo/brand2-logo.svg',
     },
   ];
 </script>

@@ -8,10 +8,10 @@
 
 <script setup lang="ts">
   const values: string[] = [
-    '/home/images/info/about-1.webp',
-    '/home/images/info/about-2.webp',
-    '/home/images/info/about-3.webp',
-    '/home/images/info/about-4.webp',
+    '/images/info/about-1.webp',
+    '/images/info/about-2.webp',
+    '/images/info/about-3.webp',
+    '/images/info/about-4.webp',
   ];
 </script>
 

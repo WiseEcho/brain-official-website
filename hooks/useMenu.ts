@@ -50,25 +50,25 @@ export default function useMenu() {
             name: '内容中台',
             desc: '本地结构化素材库 快速存储 多标签检索 素材复用 降本增效',
             href: '/product#内容中台',
-            icon: '/home/images/icon/content.svg',
+            icon: '/images/icon/content.svg',
           },
           {
             name: '智能投流',
             desc: '本地结构化素材库 快速存储 多标签检索 素材复用 降本增效',
             href: '/product#智能投放',
-            icon: '/home/images/icon/flow.svg',
+            icon: '/images/icon/flow.svg',
           },
           {
             name: '工作协同',
             desc: '自定义搭建内容营销SOP 任务到人 自动提醒事事可追溯 工作协同条理分明',
             href: '/product#工作协同',
-            icon: '/home/images/icon/collaborator.svg',
+            icon: '/images/icon/collaborator.svg',
           },
           {
             name: '数据复盘',
             desc: '自动汇聚互动数据 交易数据等 自动生成报表提高复盘与考核效率',
             href: '/product#数据复盘',
-            icon: '/home/images/icon/data.svg',
+            icon: '/images/icon/data.svg',
           },
         ],
       },
@@ -92,22 +92,22 @@ export default function useMenu() {
       subMenus: [
         {
           label: '内容中台',
-          url: '/home/product#内容中台',
+          url: '/product#内容中台',
           openBlank: false,
         },
         {
           label: '工作协同',
-          url: '/home/product#工作协同',
+          url: '/product#工作协同',
           openBlank: false,
         },
         {
           label: '智能投放',
-          url: '/home/product#智能投放',
+          url: '/product#智能投放',
           openBlank: false,
         },
         {
           label: '数据复盘',
-          url: '/home/product#数据复盘',
+          url: '/product#数据复盘',
           openBlank: false,
         },
       ],
@@ -130,7 +130,7 @@ export default function useMenu() {
           url: '',
           tooltip: {
             open: true,
-            img: '/home/images/qrcode_for_gw.jpg',
+            img: '/images/qrcode_for_gw.jpg',
           },
         },
       ],
@@ -140,7 +140,7 @@ export default function useMenu() {
       subMenus: [
         {
           label: '公司介绍',
-          url: '/home/about',
+          url: '/about',
           openBlank: false,
         },
       ],

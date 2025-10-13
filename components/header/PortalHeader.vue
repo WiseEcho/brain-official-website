@@ -106,8 +106,8 @@
     const isInWhiteList = headerThemeList.includes(currentRouteName);
 
     return isInWhiteList
-      ? '/home/images/portal-logo.svg'
-      : '/home/images/portal-logo-dark.svg';
+      ? '/images/portal-logo.svg'
+      : '/images/portal-logo-dark.svg';
   });
   const checkActive = (item: any) => {
     if (headerThemeList.includes(route.name as string)) {

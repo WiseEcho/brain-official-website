@@ -125,10 +125,10 @@
   const { resourceMap, isShow } = useResource();
   const { headerDark } = useHeader();
   const { getFloatBtnPosition } = useMobile();
-  const PHONE = '/home/images/icon/phone.png';
-  const PHONE_ACTIVE = '/home/images/icon/phone-logo-active.png';
-  const WECHAT = '/home/images/icon/wechat.png';
-  const QR_CODE = '/home/images/qrcode_for_gw.jpg';
+  const PHONE = '/images/icon/phone.png';
+  const PHONE_ACTIVE = '/images/icon/phone-logo-active.png';
+  const WECHAT = '/images/icon/wechat.png';
+  const QR_CODE = '/images/qrcode_for_gw.jpg';
 
   useSeoMeta({
     ogImage: {

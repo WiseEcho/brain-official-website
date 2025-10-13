@@ -59,7 +59,7 @@
   const groupPrice = [
     {
       background: 'classic',
-      poster: '/home/images/price/small-group.png',
+      poster: '/images/price/small-group.png',
       price: '1250',
       priceSuffix: '元/月',
       originPrice: '20000元/年',
@@ -69,7 +69,7 @@
     },
     {
       background: 'professional',
-      poster: '/home/images/price/cv-group.png',
+      poster: '/images/price/cv-group.png',
       price: '2500',
       priceSuffix: '元/月',
       originPrice: '40000元/年',
@@ -79,7 +79,7 @@
     },
     {
       background: 'exalted',
-      poster: '/home/images/price/pv-group.png',
+      poster: '/images/price/pv-group.png',
       price: '5000',
       priceSuffix: '元/月',
       originPrice: '80000元/年',

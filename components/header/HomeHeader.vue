@@ -21,7 +21,7 @@
       desc: '编 拍 剪 审 投 评 全程赋能',
       btnText: '立即免费试用',
       route: '#',
-      showUrl: '/home/video/视频大脑视频.mp4',
+      showUrl: '/video/视频大脑视频.mp4',
       type: 'video',
     },
     {
@@ -29,7 +29,7 @@
       desc: '批量打标上传 极速存储 精准检索 逐帧审批 按需共享',
       btnText: '立即免费试用',
       route: '#',
-      showUrl: '/home/images/swiper/swiper-1.webp',
+      showUrl: '/images/swiper/swiper-1.webp',
       type: 'image',
     },
     {
@@ -37,7 +37,7 @@
       desc: '多账户聚合  批量搭建计划 智能盯盘 计划模板 投放报表',
       btnText: '立即免费试用',
       route: '#',
-      showUrl: '/home/images/swiper/swiper-2.webp',
+      showUrl: '/images/swiper/swiper-2.webp',
       type: 'image',
     },
     {
@@ -45,7 +45,7 @@
       desc: '创作报表 投放报表 素材互动数据',
       btnText: '立即免费试用',
       route: '#',
-      showUrl: '/home/images/swiper/swiper-3.webp',
+      showUrl: '/images/swiper/swiper-3.webp',
       type: 'image',
     },
   ]);

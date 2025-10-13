@@ -96,7 +96,8 @@ export default defineNuxtConfig({
         },
       ],
     },
-    baseURL: process.env.NODE_ENV === 'production' ? '/home/' : '/',
+    // baseURL: process.env.NODE_ENV === 'production' ? '/home/' : '/',
+    baseURL: '/',
   },
 
   // CSS配置
@@ -179,7 +180,7 @@ export default defineNuxtConfig({
     autoLastmod: true,
     urls: [
       {
-        loc: '/home/',
+        loc: '/',
         images: [
           {
             loc: 'https://vms.9466.com/home/images/poster.png',
@@ -188,7 +189,7 @@ export default defineNuxtConfig({
         ],
       },
       {
-        loc: '/home/price',
+        loc: '/price',
         images: [
           {
             loc: 'https://vms.9466.com/home/images/poster.png',
@@ -197,7 +198,7 @@ export default defineNuxtConfig({
         ],
       },
       {
-        loc: '/home/product',
+        loc: '/product',
         images: [
           {
             loc: 'https://vms.9466.com/home/images/poster.png',
@@ -206,7 +207,7 @@ export default defineNuxtConfig({
         ],
       },
       {
-        loc: '/home/about',
+        loc: '/about',
         images: [
           {
             loc: 'https://vms.9466.com/home/images/poster.png',

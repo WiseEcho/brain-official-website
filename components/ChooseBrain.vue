@@ -36,31 +36,31 @@
       count: 50,
       countSuffix: '%',
       label: '素材复用度提升',
-      icon: '/home/images/icon/up.svg',
+      icon: '/images/icon/up.svg',
     },
     {
       count: 300,
       countSuffix: '%',
       label: '投流效率提升',
-      icon: '/home/images/icon/up.svg',
+      icon: '/images/icon/up.svg',
     },
     {
       count: 100,
       countSuffix: '%',
       label: '运营效率提升',
-      icon: '/home/images/icon/up.svg',
+      icon: '/images/icon/up.svg',
     },
     {
       count: 40,
       countSuffix: '%',
       label: '创作成本降低',
-      icon: '/home/images/icon/down.svg',
+      icon: '/images/icon/down.svg',
     },
     {
       count: 40,
       countSuffix: '%',
       label: '人力成本降低',
-      icon: '/home/images/icon/down.svg',
+      icon: '/images/icon/down.svg',
     },
   ];
 </script>

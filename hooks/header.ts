@@ -19,7 +19,7 @@ export default function useHeader() {
 
   const goHome = () => {
     if (process.client) {
-      router.push('/home');
+      router.push('/');
     }
   };
 
