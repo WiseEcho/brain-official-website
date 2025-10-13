@@ -140,9 +140,27 @@
     },
   );
   const dataList = ref<PropsType[]>(props.data);
+
+   // 域名检测和URL构建工具函数
+   const getTargetUrl = (path: string): string => {
+    if (!process.client) return path;
+    
+    const currentHostname = window.location.hostname;
+    const targetHostname = 'vms.9466.com';
+    
+    // 如果当前域名是目标域名，直接使用相对路径
+    if (currentHostname === targetHostname) {
+      return path;
+    }
+    
+    // 如果不是目标域名，构建完整URL
+    const currentProtocol = window.location.protocol;
+    return `${currentProtocol}//${targetHostname}${path}`;
+  };
   const jump = () => {
     if (process.client) {
-      window.location.href = '/dashboard';
+      const targetUrl = getTargetUrl('/dashboard');
+      window.location.href = targetUrl;
     }
   };
   function onInitSwiper() {

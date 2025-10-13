@@ -9,6 +9,9 @@ RUN npm run generate # 生成静态站点
 FROM nginx:1.25.2
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/.output/public ./home/
+COPY --from=builder /app/.output/public/index.html ./
+COPY --from=builder /app/.output/public/favicon.ico ./
+COPY --from=builder /app/.output/public/robots.txt ./
 # COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
