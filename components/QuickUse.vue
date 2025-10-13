@@ -14,7 +14,13 @@
   };
 
 
-  // 域名检测和URL构建工具函数
+  
+  type PropsType = Partial<propsType>;
+  withDefaults(defineProps<PropsType>(), {
+    label: '立即免费试用',
+    onClick: () => {
+
+      // 域名检测和URL构建工具函数
   const getTargetUrl = (path: string): string => {
     if (!process.client) return path;
     
@@ -31,10 +37,6 @@
     return `${currentProtocol}//${targetHostname}${path}`;
   };
 
-  type PropsType = Partial<propsType>;
-  withDefaults(defineProps<PropsType>(), {
-    label: '立即免费试用',
-    onClick: () => {
       if (process.client) {
         const targetUrl = getTargetUrl('/dashboard');
         window.location.href = targetUrl;
