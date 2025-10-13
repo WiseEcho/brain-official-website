@@ -132,13 +132,13 @@
 
   useSeoMeta({
     ogImage: {
-      url: 'https://vms.9466.com/home/images/poster.png',
+      url: 'http://www.shipindanao.com/images/poster.png',
       type: 'image/png',
     },
     ogSiteName: '9466视频大脑',
     ogType: 'website',
     ogTitle: '视频大脑 - 短视频营销协同数智化平台',
-    ogUrl: 'https://vms.9466.com/',
+    ogUrl: 'http://www.shipindanao.com/',
     ogDescription: '视频大脑是专为内容营销团队打造的“编、拍、剪、投、察”全流程生产系统。整合策划、拍摄、剪辑、发布、分析，一站式解决视频生产难题，大幅提升团队效率与内容效果。',
   });
 </script>

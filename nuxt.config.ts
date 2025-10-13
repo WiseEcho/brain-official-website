@@ -57,7 +57,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://vms.9466.com/home/' },
+        { rel: 'canonical', href: 'http://www.shipindanao.com/' },
       ],
       script: [
         {
@@ -67,16 +67,16 @@ export default defineNuxtConfig({
             '@type': 'WebSite',
             'name': '9466视频大脑',
             'alternateName': '视频大脑 - 短视频营销协同数智化平台',
-            'url': 'https://vms.9466.com/home/',
+            'url': 'http://www.shipindanao.com/',
             'publisher': {
               '@type': 'Organization',
               'name': '北京思拓合众科技股份有限公司',
               'logo': {
                 '@type': 'ImageObject',
-                'url': 'https://vms.9466.com/home/images/portal-logo.svg',
+                'url': 'http://www.shipindanao.com/images/portal-logo.svg',
               },
             },
-            'image': ['https://vms.9466.com/home/images/poster.png'],
+            'image': ['http://www.shipindanao.com/images/poster.png'],
           }),
           // 防止内容被转义
           tagPosition: 'head',
@@ -183,7 +183,7 @@ export default defineNuxtConfig({
         loc: '/',
         images: [
           {
-            loc: 'https://vms.9466.com/home/images/poster.png',
+            loc: 'http://www.shipindanao.com/images/poster.png',
             title: '视频大脑 - 短视频营销协同数智化平台',
           },
         ],
@@ -192,7 +192,7 @@ export default defineNuxtConfig({
         loc: '/price',
         images: [
           {
-            loc: 'https://vms.9466.com/home/images/poster.png',
+            loc: 'http://www.shipindanao.com/images/poster.png',
             title: '视频大脑 - 短视频营销协同数智化平台',
           },
         ],
@@ -201,7 +201,7 @@ export default defineNuxtConfig({
         loc: '/product',
         images: [
           {
-            loc: 'https://vms.9466.com/home/images/poster.png',
+            loc: 'http://www.shipindanao.com/images/poster.png',
             title: '视频大脑 - 短视频营销协同数智化平台',
           },
         ],
@@ -210,7 +210,7 @@ export default defineNuxtConfig({
         loc: '/about',
         images: [
           {
-            loc: 'https://vms.9466.com/home/images/poster.png',
+            loc: 'http://www.shipindanao.com/images/poster.png',
             title: '视频大脑 - 短视频营销协同数智化平台',
           },
         ],
@@ -219,7 +219,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: 'https://vms.9466.com/',
+    url: 'http://www.shipindanao.com',
     name: '9466视频大脑',
   },
 });
