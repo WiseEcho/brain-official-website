@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="视频大脑协同底座 - 统一入口承接日常工作。汇聚关键数据、任务列表、常用功能和工作提醒，支持项目协同、权限配置、消息通知，让协作更可追踪。">
+  <title>协同底座 - 视频大脑</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F5F3FF', 100: '#EDE9FE', 200: '#DDD6FE', 300: '#C4B5FD',
+              400: '#A78BFA', 500: '#8B5CF6', 600: '#7C3AED', 700: '#6D28D9',
+              800: '#5B21B6', 900: '#4C1D95',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 cursor-pointer shrink-0">
+        <img src="images/logo.png" alt="视频大脑" class="h-8 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+        <a class="hover:text-brand-600 py-5 transition-colors" href="index.html">首页</a>
+        <a class="text-brand-600 border-b-2 border-brand-600 py-5" href="products.html">产品</a>
+        <a class="hover:text-brand-600 py-5 transition-colors" href="pricing.html">价格</a>
+        <a class="hover:text-brand-600 py-5 transition-colors" href="about.html">关于我们</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4">
+        <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="https://vms.9466.com/" target="_blank" rel="noopener noreferrer">登录</a>
+        <a class="bg-gradient-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity shadow-md shadow-purple-500/30" href="index.html#trial">预约演示</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="打开菜单" aria-expanded="false">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <nav class="px-4 py-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">首页</a>
+        <a href="products.html" class="block px-3 py-2 rounded-lg text-brand-600 bg-brand-50 font-medium">产品</a>
+        <a href="pricing.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">价格</a>
+        <a href="about.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">关于我们</a>
+        <div class="pt-3 border-t border-gray-100 space-y-2">
+          <a href="https://vms.9466.com/" target="_blank" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" rel="noopener noreferrer">登录</a>
+          <a href="index.html#trial" class="block px-3 py-2 rounded-lg bg-gradient-primary text-white text-center font-medium">预约演示</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="relative pt-32 pb-20 overflow-hidden" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 30%, #FFFFFF 60%, #F8F5FF 100%);">
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(124,58,237,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex items-center gap-2 text-sm text-violet-600 font-medium mb-4">
+          <a href="products.html" class="hover:underline">产品中心</a>
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+          <span>协同底座</span>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 text-violet-700 text-sm font-semibold border border-violet-200/60 shadow-sm mb-6">
+              <span class="material-symbols-outlined text-[16px]">settings_applications</span>
+              协同底座
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-4">
+              统一入口，<br>让协作更可追踪
+            </h1>
+            <p class="text-lg text-gray-500 leading-relaxed mb-8">
+              汇聚关键数据、任务列表、常用功能和工作提醒，支持项目协同、权限配置、消息通知，为六大核心模块提供稳定的底层支撑，让团队化、组织化使用成为可能。
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 text-violet-700 text-sm font-medium">
+                <span class="material-symbols-outlined text-[16px]">check_circle</span>工作台
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 text-violet-700 text-sm font-medium">
+                <span class="material-symbols-outlined text-[16px]">check_circle</span>项目协同
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 text-violet-700 text-sm font-medium">
+                <span class="material-symbols-outlined text-[16px]">check_circle</span>权限配置
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 text-violet-700 text-sm font-medium">
+                <span class="material-symbols-outlined text-[16px]">check_circle</span>通知订阅
+              </span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="rounded-2xl bg-gradient-to-br from-violet-100 to-purple-50 border border-violet-200/50 p-8 aspect-video flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-300 text-8xl">settings_applications</span>
+                <p class="text-violet-400 text-sm mt-4">功能演示占位</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 1: 工作台 -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 aspect-[4/3] flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-200 text-8xl">dashboard</span>
+                <p class="text-violet-300 text-sm mt-4">工作台演示占位</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-600">dashboard</span>
+              </div>
+              <span class="text-sm font-semibold text-violet-600 uppercase tracking-wider">工作台</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">工作台</h2>
+            <p class="text-lg text-gray-500 mb-6">统一入口承接日常工作</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">数据汇聚</div>
+                  <div class="text-gray-500 text-sm">汇聚关键数据、任务列表、常用功能和工作提醒</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">多标签处理</div>
+                  <div class="text-gray-500 text-sm">支持多页面标签机制，便于多任务并行处理</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">常用功能入口</div>
+                  <div class="text-gray-500 text-sm">帮助用户快速进入上传、投流、报表、配置等页面</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">工作追踪</div>
+                  <div class="text-gray-500 text-sm">协作消息和工作状态集中展示，让日常工作更可追踪</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 2: 项目协同 -->
+    <section class="py-20 bg-gray-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-600">folder_shared</span>
+              </div>
+              <span class="text-sm font-semibold text-violet-600 uppercase tracking-wider">项目协同</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">项目协同</h2>
+            <p class="text-lg text-gray-500 mb-6">专项任务聚合目标资产数据</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">多项目视图</div>
+                  <div class="text-gray-500 text-sm">支持我参与的、我负责的、全部项目、标星项目等项目视图</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">项目内管理</div>
+                  <div class="text-gray-500 text-sm">项目内可管理目标、任务、素材、成片、商品、共享、数据、成员</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">专项聚合</div>
+                  <div class="text-gray-500 text-sm">帮助团队围绕专项任务统一查看执行进度、内容成果和数据结果</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 aspect-[4/3] flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-200 text-8xl">folder_shared</span>
+                <p class="text-violet-300 text-sm mt-4">项目协同演示占位</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 3: 配置与权限 -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 aspect-[4/3] flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-200 text-8xl">admin_panel_settings</span>
+                <p class="text-violet-300 text-sm mt-4">权限配置演示占位</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-600">admin_panel_settings</span>
+              </div>
+              <span class="text-sm font-semibold text-violet-600 uppercase tracking-wider">配置与权限</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">配置与权限</h2>
+            <p class="text-lg text-gray-500 mb-6">用配置能力支撑团队化落地</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">组织管理</div>
+                  <div class="text-gray-500 text-sm">支持用户、角色、组织架构、团队等组织管理能力</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">业务配置</div>
+                  <div class="text-gray-500 text-sm">支持公共标签、分类管理、状态管理、批注标签等业务配置</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">平台配置</div>
+                  <div class="text-gray-500 text-sm">支持自动通知、功能开关、安全设置、查看权限等平台配置</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 4: 订阅与通知 -->
+    <section class="py-20 bg-gray-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-600">notifications_active</span>
+              </div>
+              <span class="text-sm font-semibold text-violet-600 uppercase tracking-wider">订阅与通知</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">订阅与通知</h2>
+            <p class="text-lg text-gray-500 mb-6">关键结果与异常信息主动触达</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">多周期订阅</div>
+                  <div class="text-gray-500 text-sm">支持小时报、日报、周报、月报等多种周期的数据订阅方式</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">丰富通知类型</div>
+                  <div class="text-gray-500 text-sm">支持任务、爆款、投放、成片、批注、分享、状态、卡审、预警、清理等通知类型</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">多维度配置</div>
+                  <div class="text-gray-500 text-sm">支持面向个人、项目、部门、企业等不同维度进行通知配置</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 aspect-[4/3] flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-200 text-8xl">notifications_active</span>
+                <p class="text-violet-300 text-sm mt-4">订阅与通知演示占位</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 5: 评论管理 -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 aspect-[4/3] flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-200 text-8xl">forum</span>
+                <p class="text-violet-300 text-sm mt-4">评论管理演示占位</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-600">forum</span>
+              </div>
+              <span class="text-sm font-semibold text-violet-600 uppercase tracking-wider">评论管理</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">评论管理</h2>
+            <p class="text-lg text-gray-500 mb-6">批量运营评论区，维护转化阵地</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">批量回复</div>
+                  <div class="text-gray-500 text-sm">一次处理多条评论，大幅提升回复效率</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">评论隐藏</div>
+                  <div class="text-gray-500 text-sm">自动屏蔽敏感/违规评论，维护评论区氛围</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">常用语配置</div>
+                  <div class="text-gray-500 text-sm">预设回复模板，快速应对高频问题</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">隐藏规则</div>
+                  <div class="text-gray-500 text-sm">按关键词、用户等级等规则自动隐藏评论</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 6: 队列能力 -->
+    <section class="py-20 bg-gray-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-600">format_list_numbered</span>
+              </div>
+              <span class="text-sm font-semibold text-violet-600 uppercase tracking-wider">队列能力</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">队列能力</h2>
+            <p class="text-lg text-gray-500 mb-6">任务排队执行，资源不冲突</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">任务排队</div>
+                  <div class="text-gray-500 text-sm">上传、待投流、待剪辑等批量任务按顺序执行</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">优先级调度</div>
+                  <div class="text-gray-500 text-sm">重要任务优先处理，紧急事项不排队</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">资源分配</div>
+                  <div class="text-gray-500 text-sm">合理分配系统资源，避免多任务冲突</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">状态追踪</div>
+                  <div class="text-gray-500 text-sm">实时查看队列中每个任务的执行状态</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 aspect-[4/3] flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-200 text-8xl">format_list_numbered</span>
+                <p class="text-violet-300 text-sm mt-4">队列能力演示占位</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 7: 通知中心 -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 aspect-[4/3] flex items-center justify-center">
+              <div class="text-center">
+                <span class="material-symbols-outlined text-violet-200 text-8xl">notifications</span>
+                <p class="text-violet-300 text-sm mt-4">通知中心演示占位</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-violet-600">notifications</span>
+              </div>
+              <span class="text-sm font-semibold text-violet-600 uppercase tracking-wider">通知中心</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">通知中心</h2>
+            <p class="text-lg text-gray-500 mb-6">所有消息一处看，重要信息不漏</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">消息聚合</div>
+                  <div class="text-gray-500 text-sm">集中承接任务、投放、成片、批注、分享、状态、预警等消息</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">多渠道触达</div>
+                  <div class="text-gray-500 text-sm">站内、飞书、企微等通知渠道统一接入</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">优先级展示</div>
+                  <div class="text-gray-500 text-sm">重要通知置顶，避免淹没在消息流中</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-violet-500 mt-0.5">check_circle</span>
+                <div>
+                  <div class="font-semibold text-gray-900">历史追溯</div>
+                  <div class="text-gray-500 text-sm">已读/未读、历史通知随时可查</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Summary -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">使用场景与价值</h2>
+          <p class="text-gray-500 max-w-2xl mx-auto">协同底座为上层业务模块提供组织、权限、通知等底层支撑，让规模化运转成为可能</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 text-center">
+            <div class="w-16 h-16 rounded-full bg-violet-100 flex items-center justify-center mx-auto mb-4">
+              <span class="material-symbols-outlined text-violet-600 text-2xl">groups</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">团队化落地</h3>
+            <p class="text-gray-500 text-sm">组织架构、角色权限、团队管理，支撑从小作坊到正规军的转变</p>
+          </div>
+          <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 text-center">
+            <div class="w-16 h-16 rounded-full bg-violet-100 flex items-center justify-center mx-auto mb-4">
+              <span class="material-symbols-outlined text-violet-600 text-2xl">notification_important</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">关键信息不漏</h3>
+            <p class="text-gray-500 text-sm">订阅与通知让关键结果和异常信息主动触达，告别信息遗漏</p>
+          </div>
+          <div class="rounded-2xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 p-8 text-center">
+            <div class="w-16 h-16 rounded-full bg-violet-100 flex items-center justify-center mx-auto mb-4">
+              <span class="material-symbols-outlined text-violet-600 text-2xl">hub</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">一体化运作</h3>
+            <p class="text-gray-500 text-sm">工作台统一入口，项目协同聚合数据，六大模块在底座上高效协作</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="rounded-3xl bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 p-10 md:p-16 text-white relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
+          <div class="relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">从工具使用到组织进化</h2>
+            <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">立即了解协同底座如何帮助您的团队实现规模化、组织化的高效协作</p>
+            <div class="flex flex-wrap justify-center gap-4">
+              <a href="index.html#trial" class="bg-white text-violet-600 px-8 py-3.5 rounded-full font-semibold hover:shadow-lg transition-all shadow-md">预约演示</a>
+              <a href="product-insight.html" class="bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-semibold hover:bg-white/30 transition-all">重新了解产品 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 pt-12 pb-8" id="about">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Top: Contact + Menu -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-3">
+        <!-- Left: Contact -->
+        <div class="lg:col-span-4">
+          <h4 class="font-bold text-gray-900 text-sm mb-5">联系我们</h4>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 text-sm text-gray-600">
+              <div class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600">
+                <span class="material-symbols-outlined text-base">phone</span>
+              </div>
+              <span>售前电话：18008627166</span>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex flex-col items-center">
+                <img src="images/qrcode-gongzhong.png" alt="公众号" class="w-20 h-20 rounded-xl border border-gray-100 object-cover shadow-sm">
+                <span class="text-xs text-gray-500 mt-2">微信公众号</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <img src="images/qrcode-consultant.png" alt="专属顾问" class="w-20 h-20 rounded-xl border border-gray-100 object-cover shadow-sm">
+                <span class="text-xs text-gray-500 mt-2">专属顾问</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Menu Columns -->
+        <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="space-y-4">
+            <h4 class="font-bold text-gray-900 text-sm">产品</h4>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li><a href="products.html" class="hover:text-brand-600 transition-colors">产品功能</a></li>
+              <li><a href="pricing.html" class="hover:text-brand-600 transition-colors">功能价格</a></li>
+              <li><a href="#" class="hover:text-brand-600 transition-colors">功能演示</a></li>
+              <li><a href="#" class="hover:text-brand-600 transition-colors">更新日志</a></li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h4 class="font-bold text-gray-900 text-sm">帮助中心</h4>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li><a href="https://situohezhong.feishu.cn/wiki/Rp97wRMHliwsZVkUI5icRwK4n3e" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">视频教程</a></li>
+              <li><a href="https://situohezhong.feishu.cn/wiki/CffjwLIb3ihSJ9kElSgcfKx0nNh" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">使用手册</a></li>
+              <li>
+                <a href="#" class="relative inline-block hover:text-brand-600 transition-colors group">
+                  专属顾问
+                  <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-white p-2 rounded-lg shadow-xl border border-gray-100 w-32 text-center z-50 pointer-events-none">
+                    <img src="images/qrcode-consultant.png" alt="专属顾问二维码" class="w-full h-auto rounded">
+                    <span class="block text-[10px] text-gray-500 mt-1 leading-tight">扫码咨询专属顾问</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h4 class="font-bold text-gray-900 text-sm">关于我们</h4>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li><a href="about.html" class="hover:text-brand-600 transition-colors">公司介绍</a></li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h4 class="font-bold text-gray-900 text-sm">旗下产品</h4>
+            <ul class="space-y-3 text-sm text-gray-500">
+              <li><a href="https://kol.9466.com/home" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">9466达人营销</a></li>
+              <li><a href="https://9466.com/" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">9466创作助手</a></li>
+              <li><a href="http://newsapp.cmstop.com/" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">智媒管家</a></li>
+              <li><a href="https://www.cmstop.com/" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">CmsTop</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle: Introduction (logo + auto-width text) -->
+      <div class="py-3">
+        <div class="rounded-2xl bg-gray-50/70 p-6 md:p-8">
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <img src="images/logo.png" alt="视频大脑" class="h-10 w-auto shrink-0">
+            <p class="text-gray-600 text-sm leading-relaxed">
+              视频大脑是一套帮助企业持续复制爆款内容的生产协同平台。它打通从创意、拍摄、剪辑、审核、投流到复盘的全流程，让每一条素材有沉淀、每一次投放有反馈、每一个爆款有方法论。企业不再依赖“某个厉害的人”，而是建立起可复制、可管理、可持续增长的内容生产体系。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-3 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+        <div>备案号：京ICP备09082107号-7</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-brand-600 transition-colors">隐私政策</a>
+          <a href="#" class="hover:text-brand-600 transition-colors">服务条款</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+/* ========================================
+   视频大脑官网 - 设计系统
+   ======================================== */
+
+/* 字体引入 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* 基础重置 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: #ffffff;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* ========================================
+   品牌色扩展
+   ======================================== */
+
+:root {
+  --brand-50:  #F5F3FF;
+  --brand-100: #EDE9FE;
+  --brand-200: #DDD6FE;
+  --brand-300: #C4B5FD;
+  --brand-400: #A78BFA;
+  --brand-500: #8B5CF6;
+  --brand-600: #7C3AED;
+  --brand-700: #6D28D9;
+  --brand-800: #5B21B6;
+  --brand-900: #4C1D95;
+}
+
+/* ========================================
+   工具类 / Utilities
+   ======================================== */
+
+/* 文字渐变 */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, #6B46C1, #3B82F6);
+}
+
+/* 背景渐变 */
+.bg-gradient-primary {
+  background-image: linear-gradient(90deg, #8B5CF6, #D946EF);
+}
+
+.bg-gradient-hero {
+  background-image: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+}
+
+/* Hero 图形居中 */
+.hero-graphic-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 轨道动画 */
+.orbit-circle {
+  position: absolute;
+  border: 1px dashed #E5E7EB;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-item {
+  position: absolute;
+  transform-origin: center;
+}
+
+/* ========================================
+   全局质感升级
+   ======================================== */
+
+/* 微妙噪点纹理 */
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 多层阴影 - 卡片悬浮 */
+.shadow-card {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.03),
+    0 12px 24px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shadow-card:hover {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    0 24px 48px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+/* 卡片3D hover */
+.card-3d {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: translateY(-4px) rotateX(2deg);
+  box-shadow:
+    0 20px 40px -12px rgba(124, 58, 237, 0.15),
+    0 8px 16px -4px rgba(0, 0, 0, 0.04);
+}
+
+/* 数字计数动画 */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.count-animate {
+  animation: countUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 连接线脉冲动画 */
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.pulse-arrow {
+  animation: pulse-line 2s ease-in-out infinite;
+}
+
+/* Tab滑动指示器 */
+.tab-indicator {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 大数字展示 */
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* 玻璃拟态 */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* 平滑过渡 */
+a, button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ========================================
+   功能列表选中状态
+   ======================================== */
+
+#feature-list .feature-item {
+  border-left: 3px solid transparent;
+}
+
+#feature-list .feature-item:hover {
+  background-color: #F9FAFB;
+}
+
+#feature-list .feature-item.active {
+  background-color: #F5F3FF;
+  border-left-color: #8B5CF6;
+}
+
+#feature-list .feature-item.active .feature-title {
+  color: #7C3AED;
+}
+
+/* ========================================
+   痛点卡片 - 左侧色条标识
+   ======================================== */
+
+.pain-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.pain-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--card-accent, #8B5CF6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pain-card:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   工作流程步骤 - 连接线效果
+   ======================================== */
+
+.workflow-step {
+  position: relative;
+}
+
+/* ========================================
+   表单区域玻璃效果
+   ======================================== */
+
+.glass-form-bg {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.95) 0%, rgba(139, 92, 246, 0.9) 50%, rgba(217, 70, 239, 0.85) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-form-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+/* ========================================
+   滚动条隐藏
+   ======================================== */
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========================================
+   响应式字体层级
+   ======================================== */
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+}
+
+/* ========================================
+   工作流程 - 编号Badge颜色
+   ======================================== */
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+}
+
+.step-num-01 { background: linear-gradient(135deg, #3B82F6, #60A5FA); }
+.step-num-02 { background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+.step-num-03 { background: linear-gradient(135deg, #6366F1, #818CF8); }
+.step-num-04 { background: linear-gradient(135deg, #EC4899, #F472B6); }
+.step-num-05 { background: linear-gradient(135deg, #F97316, #FB923C); }
+.step-num-06 { background: linear-gradient(135deg, #EF4444, #F87171); }
+.step-num-07 { background: linear-gradient(135deg, #10B981, #34D399); }
+.step-num-08 { background: linear-gradient(135deg, #06B6D4, #22D3EE); }
+
+.step-bar-01 { background: linear-gradient(90deg, #3B82F6, #60A5FA); }
+.step-bar-02 { background: linear-gradient(90deg, #8B5CF6, #A78BFA); }
+.step-bar-03 { background: linear-gradient(90deg, #6366F1, #818CF8); }
+.step-bar-04 { background: linear-gradient(90deg, #EC4899, #F472B6); }
+.step-bar-05 { background: linear-gradient(90deg, #F97316, #FB923C); }
+.step-bar-06 { background: linear-gradient(90deg, #EF4444, #F87171); }
+.step-bar-07 { background: linear-gradient(90deg, #10B981, #34D399); }
+.step-bar-08 { background: linear-gradient(90deg, #06B6D4, #22D3EE); }
+
+/* 工作流程卡片 */
+.workflow-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #F3F4F6;
+  padding: 24px 20px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+}
+
+.workflow-card:hover {
+  border-color: #DDD6FE;
+  box-shadow: 0 8px 24px -4px rgba(124, 58, 237, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 桌面端U型连接 - SVG */
+.u-connector {
+  position: relative;
+  height: 60px;
+  margin: 8px 0;
+}
+
+.u-connector svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* 移动端时间线 */
+.workflow-timeline {
+  position: relative;
+  padding-left: 44px;
+}
+
+.workflow-timeline::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, #C4B5FD, #A78BFA, #F472B6);
+}
+
+.workflow-timeline .timeline-step {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.workflow-timeline .timeline-step:last-child {
+  padding-bottom: 0;
+}
+
+.workflow-timeline .timeline-badge {
+  position: absolute;
+  left: -38px;
+  top: 0;
+  z-index: 2;
+}
+
+/* ========================================
+   移动端体验优化 - 新增工具类
+   ======================================== */
+
+/* 横向滚动提示：必须通过 --scroll-hint-bg 变量匹配容器背景色 */
+.scroll-hint {
+  position: relative;
+}
+.scroll-hint::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, transparent, var(--scroll-hint-bg, #ffffff));
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.scroll-hint.scrolled-end::after {
+  opacity: 0;
+}
+
+/* 底部固定 CTA 条 */
+.mobile-sticky-cta {
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.mobile-sticky-cta.visible {
+  transform: translateY(0);
+}
+
+/* 客户评价轮播吸附 */
+.testimonial-track {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.testimonial-card {
+  scroll-snap-align: start;
+}
+
+/* 移动端菜单滑入动画 */
+.mobile-menu-slide {
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.mobile-menu-slide.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ========================================
+   毛玻璃效果
+   ======================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.1) 100%);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.glass-tint {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* ========================================
+   滚动进入动画
+   ======================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 560ms; }
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   Hero 背景呼吸动画
+   ======================================== */
+
+@keyframes hero-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.hero-glow {
+  animation: hero-breathe 8s ease-in-out infinite;
+}
+
+/* ========================================
+   数字计数动画
+   ======================================== */
+
+.count-up {
+  font-variant-numeric: tabular-nums;
+}
+
+.count-up[data-text="true"] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .mobile-menu-slide {
+    transform: none;
+    opacity: 1;
+  }
+  .reveal,
+  .reveal-stagger > *,
+  .count-up[data-text="true"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-glow {
+    animation: none !important;
+  }
+}

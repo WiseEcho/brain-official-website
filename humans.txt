@@ -1,0 +1,13 @@
+/* TEAM */
+网站：视频大脑
+出品：北京思拓合众科技有限公司
+联系：售前电话 18008627166
+官网：https://www.shipindanao.com/
+
+/* THANKS */
+飞书多维表格表单（预约演示）
+
+/* SITE */
+语言：中文
+标准：HTML5, CSS3, JavaScript
+工具：Tailwind CSS, Google Fonts, Material Symbols

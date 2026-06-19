@@ -1,51 +1,35 @@
-# 视频大脑-产品官网
-## 安装
+# 视频大脑官网
 
-确保安装依赖：
+本仓库当前是 `www.shipindanao.com` 的纯静态官网发布仓库，页面和资源来自产品提供的静态部署包。
 
-```bash
-# npm
-npm install
-```
+## 目录说明
 
-## 开发服务器
+- `index.html`：官网首页。
+- `products.html`、`pricing.html`、`about.html`：主要公开页面。
+- `product-*.html`：产品二级详情页，当前由 `robots.txt` 禁止搜索引擎抓取。
+- `css/`、`js/`、`images/`：页面样式、脚本和静态资源。
+- `nginx.conf`：Docker 镜像内使用的 Nginx 配置，包含旧路径兼容和缓存规则。
 
-在 `http://localhost:3000` 启动开发服务器：
+## 本地预览
 
-```bash
-# npm
-npm run dev
-```
-
-## 生产环境
-
-构建生产环境应用：
+可以在仓库根目录启动任意静态文件服务，例如：
 
 ```bash
-make pushx
+python3 -m http.server 8080
 ```
 
-本地预览生产环境构建：
+然后访问 `http://127.0.0.1:8080/`。
+
+## 构建镜像
 
 ```bash
-# npm
-npm run preview
+make docker-build
 ```
 
-# 开发过程中的QA
-## 1.如何替换首页的视频
-
-在/brain-official-website/public/video 中替换视频，如果视频过大，使用https://handbrake.fr/进行压缩替换
-
-## 2.如何发板上线
-
-使用
+## 推送镜像
 
 ```bash
 make pushx
 ```
-然后，复制最终的镜像到1panel中的容器粘贴
 
-## 3.打包上线后显示502
-
-这是因为打包上线后的内网服务器ip地址，和代理转发到的ip不一致导致的
+`make pushx` 会在镜像构建时生成 `version.json`，然后使用 `docker buildx` 构建 `linux/amd64` 镜像并推送到默认镜像仓库。

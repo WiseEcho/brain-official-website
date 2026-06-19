@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# 禁止抓取非生产文件和迭代资产
+Disallow: /screenshots/
+Disallow: /docs/
+Disallow: /.claude/
+Disallow: /.worktrees/
+Disallow: /.superpowers/
+
+# 产品二级页面暂未公开，禁止抓取
+Disallow: /product-insight.html
+Disallow: /product-assets.html
+Disallow: /product-collaboration.html
+Disallow: /product-ad.html
+Disallow: /product-data.html
+Disallow: /product-platform.html
+
+# 站点地图
+Sitemap: https://www.shipindanao.com/sitemap.xml
