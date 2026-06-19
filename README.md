@@ -2,6 +2,13 @@
 
 本仓库当前是 `www.shipindanao.com` 的纯静态官网发布仓库，页面和资源来自产品提供的静态部署包。
 
+## 分支说明
+
+- `main`：新版官网主分支，当前用于维护和发布产品提供的纯静态官网。
+- `legacy/shipindanao-www-nuxt`：老版 `www.shipindanao.com` 官网历史分支，保留原 Nuxt 版本，便于回滚和查历史问题。
+- `archive/main-before-static-20260619`：新版静态官网合入前的 `main` 快照，只用于历史留存，不建议继续开发。
+- `feature-support-shipindanao-com`：旧的老官网功能分支名，暂时保留是为了兼容可能仍引用该分支的部署或 CI 配置；确认无引用后可删除。
+
 ## 目录说明
 
 - `index.html`：官网首页。
