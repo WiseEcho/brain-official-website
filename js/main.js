@@ -253,14 +253,16 @@
   }
 
   /* ========================================
-     功能预览 (顶部Tab + 下方GIF展示)
+     功能预览 (顶部Tab + 下方视频展示)
      ======================================== */
 
-  const previewGif = document.getElementById('preview-gif');
+  const previewVideo = document.getElementById('preview-video');
   const previewTitle = document.getElementById('preview-title-text');
   const featureDesc = document.getElementById('feature-desc');
   const featureTabs = document.getElementById('feature-tabs');
+  const featurePreview = document.getElementById('feature-preview');
   let activeFeature = '爆款素材榜单';
+  let activeFeatureName = '爆款榜单';
 
   // 功能价值点数据（参考 products.html 各模块核心能力提炼，每个价值点均为 4 个字并对应用户需求场景）
   var featureValues = {
@@ -342,11 +344,11 @@
    * 切换功能预览
    */
   function switchFeaturePreview(featureName, displayName, item) {
-    if (!previewGif) return;
+    if (!previewVideo) return;
 
-    previewGif.src = 'images/' + featureName + '.gif';
-    previewGif.alt = displayName + ' - 功能演示';
     activeFeature = featureName;
+    activeFeatureName = displayName;
+    loadFeaturePreviewVideo(featureName, displayName);
 
     // 更新标题
     if (previewTitle) previewTitle.textContent = displayName;
@@ -366,6 +368,36 @@
     item.classList.add('active', 'bg-brand-600', 'text-white');
   }
 
+  /**
+   * 加载当前功能演示视频。
+   * 官网演示素材原来使用大体积 GIF。这里改成 MP4，并延迟到预览区可见后再写入 src，
+   * 避免首屏阶段提前下载非首屏资源。
+   */
+  function loadFeaturePreviewVideo(featureName, displayName) {
+    if (!previewVideo) return;
+    const nextSrc = 'images/' + featureName + '.mp4';
+    previewVideo.setAttribute('aria-label', displayName + ' - 功能演示');
+    previewVideo.dataset.src = nextSrc;
+    if (previewVideo.dataset.ready !== 'true') return;
+    if (previewVideo.getAttribute('src') !== nextSrc) {
+      previewVideo.pause();
+      previewVideo.setAttribute('src', nextSrc);
+      previewVideo.load();
+    }
+    const playPromise = previewVideo.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function () {
+        // 浏览器可能因省电或自动播放策略拒绝播放，保留静态首帧即可，不打断页面浏览。
+      });
+    }
+  }
+
+  function markFeaturePreviewReady() {
+    if (!previewVideo || previewVideo.dataset.ready === 'true') return;
+    previewVideo.dataset.ready = 'true';
+    loadFeaturePreviewVideo(activeFeature, activeFeatureName);
+  }
+
   // 初始化
   if (featureTabs) {
     var firstTab = featureTabs.querySelector('.feature-tab.active');
@@ -373,6 +405,8 @@
       firstTab.classList.add('bg-brand-600', 'text-white');
       firstTab.classList.remove('text-gray-600', 'hover:text-brand-600', 'hover:bg-brand-50');
       var firstFeature = firstTab.getAttribute('data-feature');
+      activeFeature = firstFeature || activeFeature;
+      activeFeatureName = firstTab.getAttribute('data-name') || activeFeatureName;
       updateValuePoints(firstFeature);
     }
 
@@ -386,6 +420,22 @@
         switchFeaturePreview(featureName, displayName, tab);
       });
     });
+  }
+
+  if (previewVideo) {
+    if ('IntersectionObserver' in window && featurePreview) {
+      const previewObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            markFeaturePreviewReady();
+            previewObserver.disconnect();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      previewObserver.observe(featurePreview);
+    } else {
+      markFeaturePreviewReady();
+    }
   }
 
   /* ========================================
@@ -498,7 +548,7 @@
   if (els.heroVideo) {
     let isProgressDragging = false;
 
-    // 首屏演示视频默认自动静音循环播放，但客户需要能随时暂停、回看和开关声音。
+    // 首屏演示视频使用封面图和按需播放，避免桌面端首屏直接下载完整视频。
     function formatVideoTime(seconds) {
       if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
       const totalSeconds = Math.floor(seconds);

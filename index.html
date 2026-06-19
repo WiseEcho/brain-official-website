@@ -299,16 +299,17 @@
             <video
               id="hero-video"
               src="images/hero-video.mp4"
-              autoplay
               loop
               muted
               playsinline
+              preload="metadata"
+              poster="images/hero-video-poster.jpg"
               class="w-full h-full object-cover aspect-video cursor-pointer"
             ></video>
-            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent px-4 pb-3 pt-8 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent px-4 pb-3 pt-8 opacity-100 transition-opacity duration-200">
               <div class="flex items-center gap-2.5 text-white">
-                <button id="hero-video-play-toggle" type="button" class="w-8 h-8 rounded-full bg-white/85 hover:bg-white text-brand-600 flex items-center justify-center backdrop-blur-md ring-1 ring-brand-200/70 shadow-sm transition-colors" aria-label="暂停视频">
-                  <span id="hero-video-play-icon" class="material-symbols-outlined text-[18px]">pause</span>
+                <button id="hero-video-play-toggle" type="button" class="w-8 h-8 rounded-full bg-white/85 hover:bg-white text-brand-600 flex items-center justify-center backdrop-blur-md ring-1 ring-brand-200/70 shadow-sm transition-colors" aria-label="播放视频">
+                  <span id="hero-video-play-icon" class="material-symbols-outlined text-[18px]">play_arrow</span>
                 </button>
                 <button id="mute-toggle" type="button" class="w-8 h-8 rounded-full bg-white/85 hover:bg-white text-brand-600 flex items-center justify-center backdrop-blur-md ring-1 ring-brand-200/70 shadow-sm transition-colors" aria-label="切换视频声音">
                   <span id="mute-icon" class="material-symbols-outlined text-[18px]">volume_off</span>
@@ -965,7 +966,7 @@
                 <div class="w-12"></div>
               </div>
               <div class="p-3 bg-gradient-to-b from-gray-100 to-gray-50 flex justify-center">
-                <img id="preview-gif" src="images/爆款素材榜单.gif" alt="视频大脑爆款榜单功能演示：实时追踪抖音、快手等平台热门视频，快速发现可跟拍的爆款方向" class="max-w-full rounded-lg shadow-sm" style="max-height: 480px;" loading="lazy">
+                <video id="preview-video" data-src="images/爆款素材榜单.mp4" aria-label="视频大脑爆款榜单功能演示：实时追踪抖音、快手等平台热门视频，快速发现可跟拍的爆款方向" class="max-w-full rounded-lg shadow-sm" style="max-height: 480px;" muted loop playsinline preload="none"></video>
               </div>
             </div>
           </div>

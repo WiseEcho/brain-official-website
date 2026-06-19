@@ -4,3 +4,10 @@
 Dockerfile
 Makefile
 README.md
+node_modules
+package.json
+package-lock.json
+tailwind.config.js
+css/tailwind.input.css
+# 页面已切到 MP4 演示资源，旧 GIF 留在仓库用于对照，但不进入正式镜像。
+images/*.gif
