@@ -8,9 +8,12 @@ IMAGE_REPO ?= d-x.cmstop.net
 LOCAL_IMAGE_REPO ?= d.cmstop.xyz
 PLATFORM ?= linux/amd64
 
-.PHONY: docker-build push push_dev pushx
+.PHONY: build-tailwind docker-build push push_dev pushx
 
-docker-build:
+build-tailwind:
+	npm run build:tailwind
+
+docker-build: build-tailwind
 	docker build --build-arg IMAGE_TAG=$(IMAGE_TAG) -t $(IMAGE_REPO)/$(REPO_NAME):$(IMAGE_TAG) .
 
 push: docker-build
@@ -18,12 +21,12 @@ push: docker-build
 	docker rmi $(IMAGE_REPO)/$(REPO_NAME):$(IMAGE_TAG)
 	@echo $(IMAGE_REPO)/$(REPO_NAME):$(IMAGE_TAG)
 
-push_dev:
+push_dev: build-tailwind
 	docker build --build-arg IMAGE_TAG=dev-$(IMAGE_TAG) -t $(LOCAL_IMAGE_REPO)/$(REPO_NAME):dev-$(IMAGE_TAG) .
 	docker push $(LOCAL_IMAGE_REPO)/$(REPO_NAME):dev-$(IMAGE_TAG)
 	docker rmi $(LOCAL_IMAGE_REPO)/$(REPO_NAME):dev-$(IMAGE_TAG)
 	@echo $(LOCAL_IMAGE_REPO)/$(REPO_NAME):dev-$(IMAGE_TAG)
 
-pushx:
+pushx: build-tailwind
 	docker buildx build --platform=$(PLATFORM) --build-arg IMAGE_TAG=$(IMAGE_TAG) -t $(IMAGE_REPO)/$(REPO_NAME):$(IMAGE_TAG) --push .
 	@echo $(IMAGE_REPO)/$(REPO_NAME):$(IMAGE_TAG)
