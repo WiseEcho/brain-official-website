@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视频大脑官网 - 设计系统演示（严格遵循原风格）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F5F3FF', 100: '#EDE9FE', 200: '#DDD6FE', 300: '#C4B5FD',
+              400: '#A78BFA', 500: '#8B5CF6', 600: '#7C3AED', 700: '#6D28D9',
+              800: '#5B21B6', 900: '#4C1D95',
+            }
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    /* 复用原站关键样式 */
+    .section-title {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    @media (min-width: 768px) {
+      .section-title { font-size: 2.25rem; }
+    }
+    @media (max-width: 767px) {
+      .section-title { font-size: 1.75rem; }
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.1), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+    }
+    .card-bar { height: 4px; width: 100%; }
+    .card-bar-starter { background: linear-gradient(90deg, #9CA3AF, #D1D5DB); }
+    .card-bar-pro {
+      background: linear-gradient(90deg, #8B5CF6, #D946EF, #8B5CF6);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+    .card-bar-enterprise { background: linear-gradient(90deg, #4C1D95, #7C3AED); }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .pricing-card-popular {
+      position: relative;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(135deg, #8B5CF6, #D946EF, #A78BFA, #8B5CF6) border-box;
+      border: 2px solid transparent;
+      box-shadow: 0 0 40px -8px rgba(139, 92, 246, 0.25), 0 8px 24px -4px rgba(0,0,0,0.06);
+    }
+    .pricing-card-popular:hover {
+      box-shadow: 0 0 60px -8px rgba(139, 92, 246, 0.35), 0 16px 32px -4px rgba(0,0,0,0.08);
+    }
+    .btn-primary-solid {
+      background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+      color: white;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+    }
+    .btn-primary-solid:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45);
+    }
+    .btn-outline {
+      border: 2px solid #E5E7EB;
+      color: #374151;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: white;
+    }
+    .btn-outline:hover {
+      border-color: #8B5CF6;
+      color: #7C3AED;
+      background: #F5F3FF;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-shadow">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 cursor-pointer shrink-0">
+        <img src="../images/logo.png" alt="视频大脑 Logo" class="h-8 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+        <a class="text-brand-600 border-b-2 border-brand-600 py-5" href="#">首页</a>
+        <a class="hover:text-brand-600 py-5 transition-colors" href="#">产品</a>
+        <a class="hover:text-brand-600 py-5 transition-colors" href="#">价格</a>
+        <a class="hover:text-brand-600 py-5 transition-colors" href="#">关于我们</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-4">
+        <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="#">登录</a>
+        <a class="bg-gradient-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity shadow-md shadow-purple-500/30" href="#cta">预约演示</a>
+      </div>
+      <button class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="打开菜单">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="relative pb-24 overflow-hidden pt-20 noise-bg"
+    style="background: linear-gradient(135deg, #FAFAFF 0%, #F8F7FF 25%, #FFFFFF 50%, #FFF8FF 75%, #FAF5FF 100%);">
+    <div class="absolute inset-0 opacity-[0.03]"
+      style="background-image: linear-gradient(rgba(124,58,237,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-radial from-brand-200/20 via-transparent to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="max-w-2xl">
+        <h1 class="mb-6">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold border border-brand-200/60 shadow-sm mb-4">
+            <span class="material-symbols-outlined text-[16px]">electric_bolt</span>
+            视频大脑 · AI驱动的爆款视频生产线
+          </span>
+          <span class="block text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-2">
+            让内容电商团队效能提升
+          </span>
+          <span class="inline-block text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none"
+            style="background-image: linear-gradient(135deg, #F97316 0%, #8B5CF6 50%, #3B82F6 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            300%
+          </span>
+        </h1>
+        <p class="text-gray-500 text-lg mb-10 leading-relaxed max-w-lg">
+          一套系统，打通爆款内容生产全流程。帮助内容电商团队内容生产数字化工业化，持续输出爆款。
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <a href="#cta" class="w-full sm:w-auto bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-xl hover:shadow-brand-500/25 hover:-translate-y-0.5 transition-all text-lg flex flex-col items-center justify-center shadow-lg shadow-brand-500/20">
+            <span>立即免费试用</span>
+            <span class="text-xs font-normal opacity-80 mt-1">突破增长瓶颈，快速获取</span>
+          </a>
+          <a href="#cta" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-medium text-gray-600 bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:shadow-lg transition-all text-lg flex flex-col items-center justify-center shadow-sm">
+            <span>预约演示产品</span>
+            <span class="text-xs font-normal text-gray-400 mt-1">1v1专属演示，带您上手</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="relative hidden lg:flex flex-col gap-6">
+        <div class="group relative rounded-2xl overflow-hidden shadow-2xl shadow-brand-500/10 border border-gray-100 bg-gray-900">
+          <img src="../images/工作台.gif" alt="视频大脑工作台" class="w-full h-full object-cover">
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 glassmorphism p-4 rounded-2xl">
+          <div class="text-center">
+            <div class="flex items-center justify-center gap-1 mb-1">
+              <span class="material-symbols-outlined text-base text-brand-500">groups</span>
+              <span class="font-extrabold text-xl text-gray-900 tracking-tight">100+</span>
+            </div>
+            <p class="text-[11px] text-gray-400 font-medium">服务客户</p>
+          </div>
+          <div class="text-center">
+            <div class="flex items-center justify-center gap-1 mb-1">
+              <span class="material-symbols-outlined text-base text-brand-500">database</span>
+              <span class="font-extrabold text-xl text-gray-900 tracking-tight">1亿+</span>
+            </div>
+            <p class="text-[11px] text-gray-400 font-medium">素材管理量</p>
+          </div>
+          <div class="text-center">
+            <div class="flex items-center justify-center gap-1 mb-1">
+              <span class="material-symbols-outlined text-base text-brand-500">auto_awesome_mosaic</span>
+              <span class="font-extrabold text-xl text-gray-900 tracking-tight">100亿+</span>
+            </div>
+            <p class="text-[11px] text-gray-400 font-medium">爆款素材库</p>
+          </div>
+          <div class="text-center">
+            <div class="flex items-center justify-center gap-1 mb-1">
+              <span class="material-symbols-outlined text-base text-brand-500">trending_up</span>
+              <span class="font-extrabold text-xl text-gray-900 tracking-tight">300%</span>
+            </div>
+            <p class="text-[11px] text-gray-400 font-medium">综合ROI提升</p>
+          </div>
+        </div>
+        <div class="absolute -inset-4 bg-gradient-to-r from-brand-500/10 via-purple-500/10 to-blue-500/10 rounded-3xl blur-2xl -z-10"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="py-20 bg-gray-50/50">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-gray-900 mb-4">你的团队是否正在被这些问题拖慢增长？</h2>
+        <p class="text-gray-400 text-lg font-medium">工具分散、协同低效、管理混乱、严重影响增长</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 mb-16">
+        <div class="pain-card bg-white p-5 md:p-6 rounded-2xl shadow-card border border-gray-100/80 group" style="--card-accent: #3B82F6;">
+          <div class="w-11 h-11 bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <h3 class="text-center font-bold text-gray-900 mb-2 text-[15px]">爆款发现晚</h3>
+          <p class="text-sm text-center text-gray-400 mb-4 leading-relaxed">错过最佳二创红利期，爆款内容被竞品抢占</p>
+          <div class="text-xs text-center text-gray-400 pt-3 border-t border-gray-100/80">
+            平均错失红利期 <span class="text-brand-600 font-extrabold text-xl">2.1</span> 天
+          </div>
+        </div>
+
+        <div class="pain-card bg-white p-5 md:p-6 rounded-2xl shadow-card border border-gray-100/80 group" style="--card-accent: #8B5CF6;">
+          <div class="w-11 h-11 bg-gradient-to-br from-purple-50 to-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined">content_cut</span>
+          </div>
+          <h3 class="text-center font-bold text-gray-900 mb-2 text-[15px]">拆解效率低</h3>
+          <p class="text-sm text-center text-gray-400 mb-4 leading-relaxed">纯手工拆解脚本耗时长，拆解维度不全不准</p>
+          <div class="text-xs text-center text-gray-400 pt-3 border-t border-gray-100/80">
+            平均拆解耗时 <span class="text-brand-600 font-extrabold text-xl">3.2</span> 小时
+          </div>
+        </div>
+
+        <div class="pain-card bg-white p-5 md:p-6 rounded-2xl shadow-card border border-gray-100/80 group" style="--card-accent: #6366F1;">
+          <div class="w-11 h-11 bg-gradient-to-br from-indigo-50 to-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined">folder_off</span>
+          </div>
+          <h3 class="text-center font-bold text-gray-900 mb-2 text-[15px]">素材找不到</h3>
+          <p class="text-sm text-center text-gray-400 mb-4 leading-relaxed">素材分散在各处，命名混乱，查找耗时且易遗漏</p>
+          <div class="text-xs text-center text-gray-400 pt-3 border-t border-gray-100/80">
+            查找素材耗时 <span class="text-brand-600 font-extrabold text-xl">1</span> 小时/天
+          </div>
+        </div>
+
+        <div class="pain-card bg-white p-5 md:p-6 rounded-2xl shadow-card border border-gray-100/80 group" style="--card-accent: #06B6D4;">
+          <div class="w-11 h-11 bg-gradient-to-br from-cyan-50 to-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined">rocket_launch</span>
+          </div>
+          <h3 class="text-center font-bold text-gray-900 mb-2 text-[15px]">投放效率低</h3>
+          <p class="text-sm text-center text-gray-400 mb-4 leading-relaxed">多账号切换繁琐，投放流程复杂低效</p>
+          <div class="text-xs text-center text-gray-400 pt-3 border-t border-gray-100/80">
+            投放操作耗时增加 <span class="text-brand-600 font-extrabold text-xl">35%</span>
+          </div>
+        </div>
+
+        <div class="pain-card bg-white p-5 md:p-6 rounded-2xl shadow-card border border-gray-100/80 group" style="--card-accent: #EC4899;">
+          <div class="w-11 h-11 bg-gradient-to-br from-pink-50 to-pink-100 text-pink-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined">sync_disabled</span>
+          </div>
+          <h3 class="text-center font-bold text-gray-900 mb-2 text-[15px]">数据不闭环</h3>
+          <p class="text-sm text-center text-gray-400 mb-4 leading-relaxed">数据分散在多平台，无法形成完整决策链路</p>
+          <div class="text-xs text-center text-gray-400 pt-3 border-t border-gray-100/80">
+            决策滞后时间 <span class="text-brand-600 font-extrabold text-xl">1.5</span> 天
+          </div>
+        </div>
+      </div>
+
+      <div class="relative overflow-hidden bg-gradient-to-r from-brand-50 via-purple-50 to-blue-50 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between shadow-xl border border-brand-100">
+        <div class="absolute inset-0 opacity-20"
+          style="background-image: radial-gradient(circle at 2px 2px, rgba(139,92,246,0.5) 1px, transparent 0); background-size: 24px 24px;"></div>
+        <div class="relative z-10 text-lg font-medium text-gray-700 mb-6 md:mb-0 max-w-xl">
+          超 <span class="text-3xl font-black text-brand-600">80%</span> 的打品团队存在以上问题<br class="hidden md:block">
+          <span class="text-gray-500 text-base">导致每年浪费大量人力和广告成本</span>
+        </div>
+        <a href="#cta" class="relative z-10 bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-3.5 rounded-full font-bold hover:shadow-xl hover:shadow-brand-500/25 hover:-translate-y-0.5 transition-all shadow-lg flex items-center gap-2 shrink-0 group">
+          测一测你的团队现状
+          <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scenarios -->
+  <section class="py-10 w-full bg-white">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">适用场景</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">覆盖内容电商全链路，为不同业务场景提供针对性解决方案</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6">
+        <div class="rounded-2xl bg-gray-50 border border-gray-100 p-6 text-center hover:shadow-xl hover:-translate-y-1 hover:border-brand-200 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-brand-600">shopping_bag</span>
+          </div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">短视频带货</h3>
+          <p class="text-gray-500 text-xs">爆款素材快速复制，规模化投流放量</p>
+        </div>
+
+        <div class="rounded-2xl bg-gray-50 border border-gray-100 p-6 text-center hover:shadow-xl hover:-translate-y-1 hover:border-brand-200 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-brand-600">recommend</span>
+          </div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">内容种草</h3>
+          <p class="text-gray-500 text-xs">优质内容沉淀复用，品牌资产持续积累</p>
+        </div>
+
+        <div class="rounded-2xl bg-gray-50 border border-gray-100 p-6 text-center hover:shadow-xl hover:-translate-y-1 hover:border-brand-200 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-brand-600">live_tv</span>
+          </div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">直播带货</h3>
+          <p class="text-gray-500 text-xs">直播切片管理与二次剪辑，素材高效复用</p>
+        </div>
+
+        <div class="rounded-2xl bg-gray-50 border border-gray-100 p-6 text-center hover:shadow-xl hover:-translate-y-1 hover:border-brand-200 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-brand-600">campaign</span>
+          </div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">广告投流</h3>
+          <p class="text-gray-500 text-xs">多平台投放管理，数据驱动素材优化</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module Features (Orange theme) -->
+  <section class="py-10 w-full bg-white scroll-mt-32 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-6 mb-6">
+        <div class="lg:w-1/2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50/80 text-orange-700 text-sm font-semibold border border-orange-200/60 mb-4 glass">
+            <span class="material-symbols-outlined text-[16px]">lightbulb</span> 爆款洞察
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">拍之前就知道什么能火</h2>
+          <p class="text-lg text-gray-500">不再靠猜、不再试错，拍之前先看清方向</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-orange-50 rounded-2xl p-8 border border-orange-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-orange-600">explore</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">拍之前先看方向</h3>
+          <p class="text-gray-500 text-sm">拍之前先看看市面上什么在爆，什么卖点在跑量，拍得有方向</p>
+        </div>
+
+        <div class="bg-orange-50 rounded-2xl p-8 border border-orange-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-orange-600">school</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">拆解学习爆款</h3>
+          <p class="text-gray-500 text-sm">不只是看热闹，把爆款拆解成脚本结构、镜头节奏、卖点承接，团队都能学会</p>
+        </div>
+
+        <div class="bg-orange-50 rounded-2xl p-8 border border-orange-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-orange-600">auto_graph</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">用数据指导创作</h3>
+          <p class="text-gray-500 text-sm">看看哪些视频在带动哪些商品，下一批拍什么心里门儿清</p>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-gray-100 overflow-hidden shadow-lg bg-white">
+        <img src="../images/AI拆解.gif" alt="AI 拆解爆款视频" class="w-full h-auto">
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="relative pt-28 pb-10 w-full overflow-hidden"
+    style="background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124, 58, 237, 0.18) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%), linear-gradient(180deg, #F8F7FF 0%, #FFFFFF 100%);">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold border border-brand-200/60 shadow-sm mb-4">
+          <span class="material-symbols-outlined text-[16px]">price_change</span>
+          价格方案
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-4">选择适合团队的方案</h2>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">从小团队到大型内容电商企业，都能找到合适的产能配置</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="pricing-card">
+          <div class="card-bar card-bar-starter"></div>
+          <div class="p-8">
+            <h3 class="text-lg font-semibold text-gray-900">入门版</h3>
+            <div class="mt-4 mb-6">
+              <span class="text-4xl font-extrabold">¥299</span>
+              <span class="text-gray-500">/月</span>
+            </div>
+            <ul class="space-y-3 text-sm text-gray-600 mb-8">
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>3 人团队</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>每月 50 条 AI 拆解</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>基础素材库</li>
+            </ul>
+            <a href="#cta" class="block w-full text-center btn-outline rounded-xl py-3">开始使用</a>
+          </div>
+        </div>
+
+        <!-- Pro -->
+        <div class="pricing-card pricing-card-popular">
+          <div class="card-bar card-bar-pro"></div>
+          <div class="p-8">
+            <h3 class="text-lg font-semibold text-gray-900">专业版</h3>
+            <div class="mt-4 mb-6">
+              <span class="text-4xl font-extrabold">¥899</span>
+              <span class="text-gray-500">/月</span>
+            </div>
+            <ul class="space-y-3 text-sm text-gray-600 mb-8">
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>10 人团队</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>无限 AI 拆解</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>高级协同审片</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>数据复盘看板</li>
+            </ul>
+            <a href="#cta" class="block w-full text-center btn-primary-solid rounded-xl py-3">免费试用</a>
+          </div>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card">
+          <div class="card-bar card-bar-enterprise"></div>
+          <div class="p-8">
+            <h3 class="text-lg font-semibold text-gray-900">企业版</h3>
+            <div class="mt-4 mb-6">
+              <span class="text-4xl font-extrabold">定制</span>
+            </div>
+            <ul class="space-y-3 text-sm text-gray-600 mb-8">
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>无限席位</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>私有化部署选项</li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-brand-600 text-sm">check</span>专属客户成功经理</li>
+            </ul>
+            <a href="#cta" class="block w-full text-center btn-outline rounded-xl py-3">联系销售</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="relative py-20 overflow-hidden"
+    style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.95) 0%, rgba(139, 92, 246, 0.9) 50%, rgba(217, 70, 239, 0.85) 100%);">
+    <div class="absolute inset-0 opacity-[0.04]"
+      style="background-image: url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\"); mix-blend-mode: overlay;"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">开始用 AI 生产高转化视频</h2>
+      <p class="text-lg text-white/90 mb-8 max-w-2xl mx-auto">立即免费试用 30 天，体验从洞察到投放的完整闭环。无需信用卡，随时可退。</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-700 font-bold rounded-full hover:bg-gray-100 transition-colors shadow-lg">
+          免费试用 30 天
+        </a>
+        <a href="#" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-full border border-white/30 hover:bg-white/20 transition-colors">
+          预约演示
+        </a>
+      </div>
+      <p class="text-sm text-white/70 mt-6">已服务 1000+ 内容电商团队 · 平均 ROI 提升 300%</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-gray-900 text-gray-400">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div class="col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <img src="../images/logo.png" alt="视频大脑" class="h-8 w-auto">
+            <span class="font-bold text-lg text-white">视频大脑</span>
+          </div>
+          <p class="text-sm leading-relaxed max-w-sm">AI 驱动的爆款视频生产线，帮助内容电商团队实现内容生产数字化工业化。</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">产品</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">爆款洞察</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">素材管理</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">成片协同</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">支持</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">帮助中心</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">联系我们</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">隐私政策</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-gray-800 text-sm">
+        © 2026 视频大脑. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
