@@ -1,5 +1,7 @@
 # 视频大脑官网
 
+> 完整开发上线流程请查看：[docs/operation-manual.md](docs/operation-manual.md)
+
 本仓库当前是 `www.shipindanao.com` 的纯静态官网发布仓库，页面和资源来自产品提供的静态部署包。
 
 ## 分支说明

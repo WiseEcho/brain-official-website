@@ -1,5 +1,45 @@
 # 项目经验教训
 
+## 2026-07-01：用户说 "继续" 时要先从 claude-mem 拉上下文
+
+**问题**：
+用户输入 "继续" 后，我直接回答 "上下文被清空了，请告诉我做什么"。用户纠正："从 claude-mem 获取啊"。
+
+**原因**：
+没有养成先查持久化记忆的习惯，默认认为 `/clear` 后所有上下文都丢失了。
+
+**规则**：
+- 用户说 "继续 / 接着 / go on" 时，优先通过 claude-mem（search / timeline / observation_context）查找最近的工作记录
+- 如果 claude-mem 为空或只有 prompt 记录，再基于 git 状态、任务文件、最近 commits 推断当前工作
+- 不要把 "我没上下文了" 作为第一反应抛给用户
+
+**如何应用**：
+1. 先调用 `claude-mem` 搜索最近 prompt / observation
+2. 结合 `git log`、`git status`、`tasks/todo.md` 重建工作上下文
+3. 用推断出的上下文向用户确认，而不是空泛地问 "要继续什么"
+
+## 2026-07-01：关键图标字体必须本地托管，不能依赖 Google Fonts
+
+**问题**：
+用户反馈 "现在样式错乱了"。排查发现 Material Symbols 图标在弱网/ Google Fonts 不可用时没有渲染为图标，而是直接显示了图标的文字名称（如 `electric_bolt`、`groups`），导致 Hero badge、stats、功能列表等布局全部崩坏。
+
+**原因**：
+- 所有页面通过 Google Fonts CDN 加载 Material Symbols
+- 中国大陆访问 Google Fonts 不稳定，慢网或失败时浏览器回退到系统字体，图标名以纯文本呈现
+- 没有本地 fallback，也没有在关键路径上消除外部依赖
+
+**规则**：
+- 任何对视觉呈现不可或缺的字体/图标资源必须本地托管
+- 避免在首屏关键路径依赖境外 CDN（Google Fonts、gstatic 等）
+- 上线前用 DevTools 模拟 Slow 3G / 断网，验证关键资源失败时的降级表现
+
+**如何应用**：
+1. 将 Material Symbols / 关键图标字体下载为 woff2 并放入 `fonts/`
+2. 编写本地 `@font-face` CSS，引用本地字体文件
+3. 更新所有 HTML 页面，用本地 CSS 替换 Google Fonts 链接
+4. 更新 Dockerfile / nginx 配置，确保构建产物包含字体并设置合理缓存
+5. 在 Slow 3G 下验证图标正常渲染，无文字名称泄露
+
 ## 2026-06-30：高级 UI 优化不能只调间距，要重构信息层级
 
 **问题**：

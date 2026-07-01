@@ -10,6 +10,7 @@ COPY humans.txt robots.txt sitemap.xml site.webmanifest ./
 COPY css ./css
 COPY js ./js
 COPY images ./images
+COPY fonts ./fonts
 
 # 镜像构建时写入版本号，避免发布流程修改仓库内静态文件。
 RUN printf '{"data":"%s"}\n' "$IMAGE_TAG" > ./version.json

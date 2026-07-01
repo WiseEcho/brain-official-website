@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="视频大脑爆款洞察 - 从找素材升级为找方向，支持爆款拆解、脚本沉淀、视频榜单，帮助编导明确卖点表达与起量方向。">
-  <title>爆款洞察 - 视频大脑</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="视频大脑是一套帮助企业持续复制爆款内容的生产协同平台。它打通从创意、拍摄、剪辑、审核、投流到复盘的全流程，让每一条素材有沉淀、每一次投放有反馈、每一个爆款有方法论。企业不再依赖“某个厉害的人”，而是建立起可复制、可管理、可持续增长的内容生产体系。" name="description"/>
+<title>爆款洞察 - 视频大脑</title>
+<link href="images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="css/material-symbols.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
     tailwind.config = {
       theme: {
         extend: {
@@ -27,7 +28,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="css/main.css">
+<link href="css/main.css" rel="stylesheet"/>
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -39,411 +40,401 @@ var _hmt = _hmt || [];
 </script>
 </head>
 <body class="bg-white text-gray-800">
-
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-shadow">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 cursor-pointer shrink-0">
-        <img src="images/logo.png" alt="视频大脑" class="h-8 w-auto">
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-        <a class="hover:text-brand-600 py-5 transition-colors" href="index.html">首页</a>
-        <a class="text-brand-600 border-b-2 border-brand-600 py-5" href="products.html">产品</a>
-        <a class="hover:text-brand-600 py-5 transition-colors" href="pricing.html">价格</a>
-        <a class="hover:text-brand-600 py-5 transition-colors" href="about.html">关于我们</a>
-      </nav>
-      <div class="hidden md:flex items-center gap-4">
-        <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="https://vms.9466.com/" target="_blank" rel="noopener noreferrer">登录</a>
-        <a class="bg-gradient-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity shadow-md shadow-purple-500/30" href="index.html#trial">预约演示</a>
-      </div>
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="打开菜单" aria-expanded="false">
-        <span class="material-symbols-outlined">menu</span>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
-      <nav class="px-4 py-3 space-y-1">
-        <a href="index.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">首页</a>
-        <a href="products.html" class="block px-3 py-2 rounded-lg text-brand-600 bg-brand-50 font-medium">产品</a>
-        <a href="pricing.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">价格</a>
-        <a href="about.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">关于我们</a>
-        <div class="pt-3 border-t border-gray-100 space-y-2">
-          <a href="https://vms.9466.com/" target="_blank" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" rel="noopener noreferrer">登录</a>
-          <a href="index.html#trial" class="block px-3 py-2 rounded-lg bg-gradient-primary text-white text-center font-medium">预约演示</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="relative pt-32 pb-20 overflow-hidden" style="background: linear-gradient(135deg, #FFFBF5 0%, #FFF5EB 30%, #FFFFFF 60%, #FFF8F0 100%);">
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(249,115,22,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="flex items-center gap-2 text-sm text-orange-600 font-medium mb-4">
-          <a href="products.html" class="hover:underline">产品中心</a>
-          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-          <span>爆款洞察</span>
-        </div>
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-700 text-sm font-semibold border border-orange-200/60 shadow-sm mb-6">
-              <span class="material-symbols-outlined text-[16px]">lightbulb</span>
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-shadow">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<a class="flex items-center gap-2 cursor-pointer shrink-0" href="index.html">
+<img alt="视频大脑" class="h-8 w-auto" src="images/logo.png"/>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+<a class="hover:text-brand-600 py-5 transition-colors" href="index.html">首页</a>
+<a class="text-brand-600 border-b-2 border-brand-600 py-5" href="products.html">产品</a>
+<a class="hover:text-brand-600 py-5 transition-colors" href="pricing.html">价格</a>
+<a class="hover:text-brand-600 py-5 transition-colors" href="about.html">关于我们</a>
+</nav>
+<div class="hidden md:flex items-center gap-4">
+<a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="https://vms.9466.com/" rel="noopener noreferrer" target="_blank">登录</a>
+<a class="bg-gradient-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity shadow-md shadow-purple-500/30" href="index.html#trial">预约演示</a>
+</div>
+<button aria-expanded="false" aria-label="打开菜单" class="md:hidden p-2 text-gray-600 hover:text-gray-900" id="mobile-menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="hidden md:hidden border-t border-gray-100 bg-white" id="mobile-menu">
+<nav class="px-4 py-3 space-y-1">
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="index.html">首页</a>
+<a class="block px-3 py-2 rounded-lg text-brand-600 bg-brand-50 font-medium" href="products.html">产品</a>
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="pricing.html">价格</a>
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="about.html">关于我们</a>
+<div class="pt-3 border-t border-gray-100 space-y-2">
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="https://vms.9466.com/" rel="noopener noreferrer" target="_blank">登录</a>
+<a class="block px-3 py-2 rounded-lg bg-gradient-primary text-white text-center font-medium" href="index.html#trial">预约演示</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<!-- Hero -->
+<section class="relative pt-32 pb-20 overflow-hidden" style="background: linear-gradient(135deg, #FFFBF5 0%, #FFF5EB 30%, #FFFFFF 60%, #FFF8F0 100%);">
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(249,115,22,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex items-center gap-2 text-sm text-orange-600 font-medium mb-4">
+<a class="hover:underline" href="products.html">产品中心</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>爆款洞察</span>
+</div>
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-700 text-sm font-semibold border border-orange-200/60 shadow-sm mb-6">
+<span class="material-symbols-outlined text-[16px]">lightbulb</span>
               方向洞察
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-4">
-              从"找素材"<br>升级为"找方向"
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-4">
+              从"找素材"<br/>升级为"找方向"
             </h1>
-            <p class="text-lg text-gray-500 leading-relaxed mb-8">
+<p class="text-lg text-gray-500 leading-relaxed mb-8">
               先找对方向，再组织拍摄投放。支持围绕爆款视频、商品、达人、店铺等维度快速筛选高参考价值内容，帮助编导在拍摄前先明确卖点表达、内容风格与起量方向，减少凭经验直拍、靠试错找方向的前置成本。
             </p>
-            <div class="flex flex-wrap gap-3">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>爆款洞察
+<div class="flex flex-wrap gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>爆款洞察
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>爆款拆解
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>爆款拆解
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>脚本沉淀
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>脚本沉淀
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>视频榜单
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>视频榜单
               </span>
-            </div>
-          </div>
-          <div class="relative">
-            <div class="rounded-2xl bg-gradient-to-br from-orange-100 to-amber-50 border border-orange-200/50 p-8 aspect-video flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-orange-300 text-8xl">lightbulb</span>
-                <p class="text-orange-400 text-sm mt-4">功能演示占位</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 1: 爆款洞察 -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-orange-200 text-8xl">search</span>
-                <p class="text-orange-300 text-sm mt-4">爆款洞察演示占位</p>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-orange-600">search</span>
-              </div>
-              <span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">方向洞察</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">爆款洞察</h2>
-            <p class="text-lg text-gray-500 mb-6">先找对方向，再组织拍摄投放</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">多维度筛选</div>
-                  <div class="text-gray-500 text-sm">支持围绕爆款视频、商品、达人、店铺等维度快速筛选高参考价值内容</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">拍摄前置决策</div>
-                  <div class="text-gray-500 text-sm">帮助编导在拍摄前先明确卖点表达、内容风格与起量方向</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">降低试错成本</div>
-                  <div class="text-gray-500 text-sm">减少凭经验直拍、靠试错找方向的前置成本</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 2: 爆款拆解 -->
-    <section class="py-20 bg-gray-50/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-orange-600">construction</span>
-              </div>
-              <span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">结构化解构</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">爆款拆解</h2>
-            <p class="text-lg text-gray-500 mb-6">看见爆款结果，更看懂爆款结构</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">多维拆解模式</div>
-                  <div class="text-gray-500 text-sm">支持将爆款内容拆解为自主分镜、语义分镜、场景分镜等结构化信息</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">理解表达逻辑</div>
-                  <div class="text-gray-500 text-sm">帮助编导更快理解镜头节奏、表达逻辑与卖点承接方式</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">结构化学习</div>
-                  <div class="text-gray-500 text-sm">让团队从"模糊模仿爆款"转向"结构化学习爆款"</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-orange-200 text-8xl">construction</span>
-                <p class="text-orange-300 text-sm mt-4">爆款拆解演示占位</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 3: 脚本与文案沉淀 -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-orange-200 text-8xl">description</span>
-                <p class="text-orange-300 text-sm mt-4">脚本沉淀演示占位</p>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-orange-600">description</span>
-              </div>
-              <span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">资产沉淀</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">脚本与文案沉淀</h2>
-            <p class="text-lg text-gray-500 mb-6">为创作提供依据，而不是替代创作</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">创作依据沉淀</div>
-                  <div class="text-gray-500 text-sm">沉淀爆款依据与脚本资产，衔接创意形成与后续执行</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">多类型内容管理</div>
-                  <div class="text-gray-500 text-sm">支持脚本、文案、评论文案等内容资产上传和沉淀</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">流程衔接</div>
-                  <div class="text-gray-500 text-sm">脚本不是孤立文档，可与后续拍摄、剪辑、成片流程衔接，让创意判断、执行参考和内容资产沉淀形成闭环</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 4: 爆款视频榜单 -->
-    <section class="py-20 bg-gray-50/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-orange-600">trending_up</span>
-              </div>
-              <span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">数据观察</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">爆款视频榜单</h2>
-            <p class="text-lg text-gray-500 mb-6">以爆款视频为核心，多维重排观察</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">视频排行榜</div>
-                  <div class="text-gray-500 text-sm">支持以视频排行榜汇聚高参考价值爆款内容</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">多维度重排</div>
-                  <div class="text-gray-500 text-sm">支持按商品、店铺、达人等维度重排同一批爆款数据</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">反推起量线索</div>
-                  <div class="text-gray-500 text-sm">帮助团队从视频表现反推商品、店铺、达人等起量线索，为后续拆解、创作参考、素材判断提供更明确的方向依据</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-orange-200 text-8xl">trending_up</span>
-                <p class="text-orange-300 text-sm mt-4">视频榜单演示占位</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Value Summary -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">使用场景与价值</h2>
-          <p class="text-gray-500 max-w-2xl mx-auto">爆款洞察模块帮助团队在创作前建立清晰的方向感，让每一次拍摄都有据可依</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 text-center">
-            <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
-              <span class="material-symbols-outlined text-orange-600 text-2xl">explore</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">编导找方向</h3>
-            <p class="text-gray-500 text-sm">拍摄前通过爆款洞察明确卖点表达、内容风格与起量方向，不再凭感觉创作</p>
-          </div>
-          <div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 text-center">
-            <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
-              <span class="material-symbols-outlined text-orange-600 text-2xl">school</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">团队学爆款</h3>
-            <p class="text-gray-500 text-sm">通过结构化拆解，让团队从模糊模仿转向系统化学习，沉淀可复用的创作方法论</p>
-          </div>
-          <div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 text-center">
-            <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
-              <span class="material-symbols-outlined text-orange-600 text-2xl">auto_graph</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">数据驱决策</h3>
-            <p class="text-gray-500 text-sm">以视频榜单反推商品、店铺、达人等起量线索，用数据指导下一轮创作方向</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="rounded-3xl bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 p-10 md:p-16 text-white relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
-          <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
-          <div class="relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">用数据找方向，让创作有依据</h2>
-            <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">立即了解爆款洞察如何帮助您的团队减少试错成本，提升爆款命中率</p>
-            <div class="flex flex-wrap justify-center gap-4">
-              <a href="index.html#trial" class="bg-white text-orange-600 px-8 py-3.5 rounded-full font-semibold hover:shadow-lg transition-all shadow-md">预约演示</a>
-              <a href="product-assets.html" class="bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-semibold hover:bg-white/30 transition-all">了解素材资产 →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-white pb-8 border-t border-gray-100 pt-12" id="about">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-        <div class="lg:col-span-4">
-          <div class="flex items-center gap-2 mb-6">
-            <img src="images/logo.png" alt="视频大脑" class="h-8 w-auto">
-          </div>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
+</div>
+</div>
+<div class="relative">
+<div class="rounded-2xl bg-gradient-to-br from-orange-100 to-amber-50 border border-orange-200/50 p-8 aspect-video flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-orange-300 text-8xl">lightbulb</span>
+<p class="text-orange-400 text-sm mt-4">功能演示占位</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 1: 爆款洞察 -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-orange-200 text-8xl">search</span>
+<p class="text-orange-300 text-sm mt-4">爆款洞察演示占位</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600">search</span>
+</div>
+<span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">方向洞察</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">爆款洞察</h2>
+<p class="text-lg text-gray-500 mb-6">先找对方向，再组织拍摄投放</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">多维度筛选</div>
+<div class="text-gray-500 text-sm">支持围绕爆款视频、商品、达人、店铺等维度快速筛选高参考价值内容</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">拍摄前置决策</div>
+<div class="text-gray-500 text-sm">帮助编导在拍摄前先明确卖点表达、内容风格与起量方向</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">降低试错成本</div>
+<div class="text-gray-500 text-sm">减少凭经验直拍、靠试错找方向的前置成本</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 2: 爆款拆解 -->
+<section class="py-20 bg-gray-50/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600">construction</span>
+</div>
+<span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">结构化解构</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">爆款拆解</h2>
+<p class="text-lg text-gray-500 mb-6">看见爆款结果，更看懂爆款结构</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">多维拆解模式</div>
+<div class="text-gray-500 text-sm">支持将爆款内容拆解为自主分镜、语义分镜、场景分镜等结构化信息</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">理解表达逻辑</div>
+<div class="text-gray-500 text-sm">帮助编导更快理解镜头节奏、表达逻辑与卖点承接方式</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">结构化学习</div>
+<div class="text-gray-500 text-sm">让团队从"模糊模仿爆款"转向"结构化学习爆款"</div>
+</div>
+</li>
+</ul>
+</div>
+<div>
+<div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-orange-200 text-8xl">construction</span>
+<p class="text-orange-300 text-sm mt-4">爆款拆解演示占位</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 3: 脚本与文案沉淀 -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-orange-200 text-8xl">description</span>
+<p class="text-orange-300 text-sm mt-4">脚本沉淀演示占位</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600">description</span>
+</div>
+<span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">资产沉淀</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">脚本与文案沉淀</h2>
+<p class="text-lg text-gray-500 mb-6">为创作提供依据，而不是替代创作</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">创作依据沉淀</div>
+<div class="text-gray-500 text-sm">沉淀爆款依据与脚本资产，衔接创意形成与后续执行</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">多类型内容管理</div>
+<div class="text-gray-500 text-sm">支持脚本、文案、评论文案等内容资产上传和沉淀</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">流程衔接</div>
+<div class="text-gray-500 text-sm">脚本不是孤立文档，可与后续拍摄、剪辑、成片流程衔接，让创意判断、执行参考和内容资产沉淀形成闭环</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 4: 爆款视频榜单 -->
+<section class="py-20 bg-gray-50/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600">trending_up</span>
+</div>
+<span class="text-sm font-semibold text-orange-600 uppercase tracking-wider">数据观察</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">爆款视频榜单</h2>
+<p class="text-lg text-gray-500 mb-6">以爆款视频为核心，多维重排观察</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">视频排行榜</div>
+<div class="text-gray-500 text-sm">支持以视频排行榜汇聚高参考价值爆款内容</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">多维度重排</div>
+<div class="text-gray-500 text-sm">支持按商品、店铺、达人等维度重排同一批爆款数据</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">反推起量线索</div>
+<div class="text-gray-500 text-sm">帮助团队从视频表现反推商品、店铺、达人等起量线索，为后续拆解、创作参考、素材判断提供更明确的方向依据</div>
+</div>
+</li>
+</ul>
+</div>
+<div>
+<div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-orange-200 text-8xl">trending_up</span>
+<p class="text-orange-300 text-sm mt-4">视频榜单演示占位</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Value Summary -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">使用场景与价值</h2>
+<p class="text-gray-500 max-w-2xl mx-auto">爆款洞察模块帮助团队在创作前建立清晰的方向感，让每一次拍摄都有据可依</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 text-center">
+<div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-orange-600 text-2xl">explore</span>
+</div>
+<h3 class="font-bold text-gray-900 mb-2">编导找方向</h3>
+<p class="text-gray-500 text-sm">拍摄前通过爆款洞察明确卖点表达、内容风格与起量方向，不再凭感觉创作</p>
+</div>
+<div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 text-center">
+<div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-orange-600 text-2xl">school</span>
+</div>
+<h3 class="font-bold text-gray-900 mb-2">团队学爆款</h3>
+<p class="text-gray-500 text-sm">通过结构化拆解，让团队从模糊模仿转向系统化学习，沉淀可复用的创作方法论</p>
+</div>
+<div class="rounded-2xl bg-gradient-to-br from-orange-50 to-white border border-orange-100 p-8 text-center">
+<div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-orange-600 text-2xl">auto_graph</span>
+</div>
+<h3 class="font-bold text-gray-900 mb-2">数据驱决策</h3>
+<p class="text-gray-500 text-sm">以视频榜单反推商品、店铺、达人等起量线索，用数据指导下一轮创作方向</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="py-20">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="rounded-3xl bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 p-10 md:p-16 text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
+<div class="relative z-10">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">用数据找方向，让创作有依据</h2>
+<p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">立即了解爆款洞察如何帮助您的团队减少试错成本，提升爆款命中率</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a class="bg-white text-orange-600 px-8 py-3.5 rounded-full font-semibold hover:shadow-lg transition-all shadow-md" href="index.html#trial">预约演示</a>
+<a class="bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-semibold hover:bg-white/30 transition-all" href="product-assets.html">了解素材资产 →</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white pb-8 border-t border-gray-100 pt-12" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-4">
+<div class="flex items-center gap-2 mb-6">
+<img alt="视频大脑" class="h-8 w-auto" src="images/logo.png"/>
+</div>
+<p class="text-gray-500 text-sm leading-relaxed mb-6">
             视频大脑是一套面向内容生产团队的SaaS平台，集AI能力、数据能力、协作能力于一体，帮助团队从高频发掘、优质创作到闭环优化全流程数字化。
           </p>
-          <div class="text-xs text-gray-400">&copy; 2024 视频大脑 All rights reserved.</div>
-        </div>
-        <div class="lg:col-span-5 grid grid-cols-3 gap-8">
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-900">产品</h4>
-            <ul class="space-y-2 text-sm text-gray-500">
-              <li><a href="products.html" class="hover:text-brand-600 cursor-pointer">产品功能</a></li>
-              <li><a href="pricing.html" class="hover:text-brand-600 cursor-pointer">功能价格</a></li>
-              <li><a href="index.html#trial" class="hover:text-brand-600 cursor-pointer">功能演示</a></li>
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">更新日志</a></li>
-            </ul>
-          </div>
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-900">解决方案</h4>
-            <ul class="space-y-2 text-sm text-gray-500">
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">打品团队</a></li>
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">直播团队</a></li>
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">MCN机构</a></li>
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">代运营公司</a></li>
-            </ul>
-          </div>
-          <div class="space-y-4" id="resources">
-            <h4 class="font-bold text-gray-900">资源中心</h4>
-            <ul class="space-y-2 text-sm text-gray-500">
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">帮助文档</a></li>
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">使用教程</a></li>
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">行业报告</a></li>
-              <li><a href="#" class="hover:text-brand-600 cursor-pointer">视频课程</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="lg:col-span-3 flex flex-col items-start lg:items-end">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="text-right">
-              <div class="font-bold text-gray-900">关于我们</div>
-              <ul class="space-y-1 text-sm text-gray-500 mt-2">
-                <li><a href="#" class="hover:text-brand-600 cursor-pointer">公司介绍</a></li>
-                <li><a href="#" class="hover:text-brand-600 cursor-pointer">联系我们</a></li>
-                <li><a href="#" class="hover:text-brand-600 cursor-pointer">加入我们</a></li>
-                <li><a href="#" class="hover:text-brand-600 cursor-pointer">合作伙伴</a></li>
-              </ul>
-            </div>
-            <div class="w-24 h-24 bg-gray-100 rounded-lg flex flex-col items-center justify-center p-2 border border-gray-200">
-              <div class="w-full h-full bg-gray-200 rounded flex items-center justify-center">
-                <span class="material-symbols-outlined text-gray-400">qr_code_2</span>
-              </div>
-              <span class="text-[10px] text-gray-400 mt-1">扫码添加顾问</span>
-            </div>
-          </div>
-          <div class="text-sm text-gray-600 font-medium">联系电话：19930422166</div>
-        </div>
-      </div>
-      <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
-        <div>备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备09082107号-15</a></div>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-brand-600">隐私政策</a>
-          <a href="#" class="hover:text-brand-600">服务条款</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+<div class="text-xs text-gray-400">© 2024 视频大脑 All rights reserved.</div>
+</div>
+<div class="lg:col-span-5 grid grid-cols-3 gap-8">
+<div class="space-y-4">
+<h4 class="font-bold text-gray-900">产品</h4>
+<ul class="space-y-2 text-sm text-gray-500">
+<li><a class="hover:text-brand-600 cursor-pointer" href="products.html">产品功能</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="pricing.html">功能价格</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="index.html#trial">功能演示</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">更新日志</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-gray-900">解决方案</h4>
+<ul class="space-y-2 text-sm text-gray-500">
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">打品团队</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">直播团队</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">MCN机构</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">代运营公司</a></li>
+</ul>
+</div>
+<div class="space-y-4" id="resources">
+<h4 class="font-bold text-gray-900">资源中心</h4>
+<ul class="space-y-2 text-sm text-gray-500">
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">帮助文档</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">使用教程</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">行业报告</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">视频课程</a></li>
+</ul>
+</div>
+</div>
+<div class="lg:col-span-3 flex flex-col items-start lg:items-end">
+<div class="flex items-center gap-4 mb-4">
+<div class="text-right">
+<div class="font-bold text-gray-900">关于我们</div>
+<ul class="space-y-1 text-sm text-gray-500 mt-2">
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">公司介绍</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">联系我们</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">加入我们</a></li>
+<li><a class="hover:text-brand-600 cursor-pointer" href="#">合作伙伴</a></li>
+</ul>
+</div>
+<div class="w-24 h-24 bg-gray-100 rounded-lg flex flex-col items-center justify-center p-2 border border-gray-200">
+<div class="w-full h-full bg-gray-200 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400">qr_code_2</span>
+</div>
+<span class="text-[10px] text-gray-400 mt-1">扫码添加顾问</span>
+</div>
+</div>
+<div class="text-sm text-gray-600 font-medium">联系电话：19930422166</div>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+<div>备案号：<a href="https://beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">京ICP备09082107号-15</a></div>
+<div class="flex gap-6">
+<a class="hover:text-brand-600" href="#">隐私政策</a>
+<a class="hover:text-brand-600" href="#">服务条款</a>
+</div>
+</div>
+</div>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>
