@@ -1,0 +1,12 @@
+services:
+  web:
+    image: nginx:1.30.3-alpine
+    container_name: brain-official-website-local
+    ports:
+      - "18080:80"
+    volumes:
+      # 挂载源码目录，修改后刷新浏览器即可生效
+      - ./:/usr/share/nginx/html:ro
+      # 使用项目自带的 nginx 配置（包含旧路径兼容、缓存规则等）
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    # 如果本地没有 nginx:1.30.3-alpine，Docker 会自动拉取
