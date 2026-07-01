@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="视频大脑商品投流 - 用商品维度串联素材、成片与投放。支持多平台多账户管理、批量计划搭建、智能盯盘，打通内容制作与广告投放链路。">
-  <title>商品投流 - 视频大脑</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="视频大脑是一套帮助企业持续复制爆款内容的生产协同平台。它打通从创意、拍摄、剪辑、审核、投流到复盘的全流程，让每一条素材有沉淀、每一次投放有反馈、每一个爆款有方法论。企业不再依赖“某个厉害的人”，而是建立起可复制、可管理、可持续增长的内容生产体系。" name="description"/>
+<title>商品投流 - 视频大脑</title>
+<link href="images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="images/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="css/material-symbols.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
     tailwind.config = {
       theme: {
         extend: {
@@ -27,7 +28,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="css/main.css">
+<link href="css/main.css" rel="stylesheet"/>
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -39,559 +40,545 @@ var _hmt = _hmt || [];
 </script>
 </head>
 <body class="bg-white text-gray-800">
-
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-shadow">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 cursor-pointer shrink-0">
-        <img src="images/logo.png" alt="视频大脑" class="h-8 w-auto">
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-        <a class="hover:text-brand-600 py-5 transition-colors" href="index.html">首页</a>
-        <a class="text-brand-600 border-b-2 border-brand-600 py-5" href="products.html">产品</a>
-        <a class="hover:text-brand-600 py-5 transition-colors" href="pricing.html">价格</a>
-        <a class="hover:text-brand-600 py-5 transition-colors" href="about.html">关于我们</a>
-      </nav>
-      <div class="hidden md:flex items-center gap-4">
-        <a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="https://vms.9466.com/" target="_blank" rel="noopener noreferrer">登录</a>
-        <a class="bg-gradient-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity shadow-md shadow-purple-500/30" href="index.html#trial">预约演示</a>
-      </div>
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="打开菜单" aria-expanded="false">
-        <span class="material-symbols-outlined">menu</span>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
-      <nav class="px-4 py-3 space-y-1">
-        <a href="index.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">首页</a>
-        <a href="products.html" class="block px-3 py-2 rounded-lg text-brand-600 bg-brand-50 font-medium">产品</a>
-        <a href="pricing.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">价格</a>
-        <a href="about.html" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium">关于我们</a>
-        <div class="pt-3 border-t border-gray-100 space-y-2">
-          <a href="https://vms.9466.com/" target="_blank" class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" rel="noopener noreferrer">登录</a>
-          <a href="index.html#trial" class="block px-3 py-2 rounded-lg bg-gradient-primary text-white text-center font-medium">预约演示</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="relative pt-32 pb-20 overflow-hidden" style="background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 30%, #FFFFFF 60%, #F0FDF4 100%);">
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(16,185,129,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="flex items-center gap-2 text-sm text-emerald-600 font-medium mb-4">
-          <a href="products.html" class="hover:underline">产品中心</a>
-          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-          <span>商品投流</span>
-        </div>
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold border border-emerald-200/60 shadow-sm mb-6">
-              <span class="material-symbols-outlined text-[16px]">campaign</span>
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-shadow">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<a class="flex items-center gap-2 cursor-pointer shrink-0" href="index.html">
+<img alt="视频大脑" class="h-8 w-auto" src="images/logo.png"/>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+<a class="hover:text-brand-600 py-5 transition-colors" href="index.html">首页</a>
+<a class="text-brand-600 border-b-2 border-brand-600 py-5" href="products.html">产品</a>
+<a class="hover:text-brand-600 py-5 transition-colors" href="pricing.html">价格</a>
+<a class="hover:text-brand-600 py-5 transition-colors" href="about.html">关于我们</a>
+</nav>
+<div class="hidden md:flex items-center gap-4">
+<a class="text-sm font-medium text-gray-600 hover:text-gray-900" href="https://vms.9466.com/" rel="noopener noreferrer" target="_blank">登录</a>
+<a class="bg-gradient-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity shadow-md shadow-purple-500/30" href="index.html#trial">预约演示</a>
+</div>
+<button aria-expanded="false" aria-label="打开菜单" class="md:hidden p-2 text-gray-600 hover:text-gray-900" id="mobile-menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="hidden md:hidden border-t border-gray-100 bg-white" id="mobile-menu">
+<nav class="px-4 py-3 space-y-1">
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="index.html">首页</a>
+<a class="block px-3 py-2 rounded-lg text-brand-600 bg-brand-50 font-medium" href="products.html">产品</a>
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="pricing.html">价格</a>
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="about.html">关于我们</a>
+<div class="pt-3 border-t border-gray-100 space-y-2">
+<a class="block px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" href="https://vms.9466.com/" rel="noopener noreferrer" target="_blank">登录</a>
+<a class="block px-3 py-2 rounded-lg bg-gradient-primary text-white text-center font-medium" href="index.html#trial">预约演示</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<!-- Hero -->
+<section class="relative pt-32 pb-20 overflow-hidden" style="background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 30%, #FFFFFF 60%, #F0FDF4 100%);">
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(16,185,129,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex items-center gap-2 text-sm text-emerald-600 font-medium mb-4">
+<a class="hover:underline" href="products.html">产品中心</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>商品投流</span>
+</div>
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold border border-emerald-200/60 shadow-sm mb-6">
+<span class="material-symbols-outlined text-[16px]">campaign</span>
               商品投流
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-4">
-              用商品维度串联<br>素材、成片与投放
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-4">
+              用商品维度串联<br/>素材、成片与投放
             </h1>
-            <p class="text-lg text-gray-500 leading-relaxed mb-8">
+<p class="text-lg text-gray-500 leading-relaxed mb-8">
               打通内容制作与广告投放链路。支持多平台多账户管理、批量计划搭建、智能盯盘，让成片审核通过后可直接进入广告链路，缩短从"视频做完"到"广告上机"的执行路径。
             </p>
-            <div class="flex flex-wrap gap-3">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>商品承接
+<div class="flex flex-wrap gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>商品承接
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>多平台投放
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>多平台投放
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>批量执行
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>批量执行
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
-                <span class="material-symbols-outlined text-[16px]">check_circle</span>放量治理
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>放量治理
               </span>
-            </div>
-          </div>
-          <div class="relative">
-            <div class="rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-50 border border-emerald-200/50 p-8 aspect-video flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-emerald-300 text-8xl">campaign</span>
-                <p class="text-emerald-400 text-sm mt-4">功能演示占位</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 1: 商品承接 -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-emerald-200 text-8xl">shopping_bag</span>
-                <p class="text-emerald-300 text-sm mt-4">商品承接演示占位</p>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-600">shopping_bag</span>
-              </div>
-              <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">商品承接</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">商品承接</h2>
-            <p class="text-lg text-gray-500 mb-6">用商品串联内容与投放结果</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">商品视角管理</div>
-                  <div class="text-gray-500 text-sm">支持围绕商品建立投放和内容经营视角</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">数据关联</div>
-                  <div class="text-gray-500 text-sm">支持商品与项目、素材、成片、广告数据形成关联</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">业务决策支撑</div>
-                  <div class="text-gray-500 text-sm">帮助团队从"这条视频表现如何"进一步看到"这个商品是否值得继续打"</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 2: 商品合集 -->
-    <section class="py-20 bg-gray-50/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-600">collections_bookmark</span>
-              </div>
-              <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">商品合集</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">商品合集</h2>
-            <p class="text-lg text-gray-500 mb-6">围绕打品对象集中管理数据</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">商品信息管理</div>
-                  <div class="text-gray-500 text-sm">支持创建商品合集，沉淀商品图片、名称、链接、所属项目、备注等信息</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">投放指标查看</div>
-                  <div class="text-gray-500 text-sm">支持查看商品消耗、转化、成交、ROI等投放指标</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">决策辅助</div>
-                  <div class="text-gray-500 text-sm">帮助团队围绕商品判断继续测试、暂停止损或加大放量</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-emerald-200 text-8xl">collections_bookmark</span>
-                <p class="text-emerald-300 text-sm mt-4">商品合集演示占位</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 3: 投流承接 -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-emerald-200 text-8xl">send</span>
-                <p class="text-emerald-300 text-sm mt-4">投流承接演示占位</p>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-600">send</span>
-              </div>
-              <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">投流承接</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">投流承接</h2>
-            <p class="text-lg text-gray-500 mb-6">打通内容制作与广告投放链路</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">一键推送</div>
-                  <div class="text-gray-500 text-sm">支持审核后的成片直接推送至广告平台，减少重复下载上传</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">路径缩短</div>
-                  <div class="text-gray-500 text-sm">缩短从"视频做完"到"广告上机"的执行路径</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">快速验证</div>
-                  <div class="text-gray-500 text-sm">让内容团队产出的成片更快进入卖货验证环节</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 4: 多平台多账户管理 -->
-    <section class="py-20 bg-gray-50/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-600">account_tree</span>
-              </div>
-              <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">多平台管理</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">多平台多账户管理</h2>
-            <p class="text-lg text-gray-500 mb-6">适配真实广告执行环境</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">统一承接</div>
-                  <div class="text-gray-500 text-sm">支持围绕多个广告平台、多个广告账户进行统一承接和管理</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">主流平台覆盖</div>
-                  <div class="text-gray-500 text-sm">覆盖巨量千川、巨量广告、腾讯广告、磁力金牛等平台能力</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">账户管理</div>
-                  <div class="text-gray-500 text-sm">支持账号授权、状态查看、数据同步、负责人和协作者管理</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-emerald-200 text-8xl">account_tree</span>
-                <p class="text-emerald-300 text-sm mt-4">多平台管理演示占位</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 5: 核心投放场景 -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
-              <div class="text-center">
-                <span class="material-symbols-outlined text-emerald-200 text-8xl">rocket_launch</span>
-                <p class="text-emerald-300 text-sm mt-4">投放场景演示占位</p>
-              </div>
-            </div>
-          </div>
-          <div class="order-1 lg:order-2">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-600">rocket_launch</span>
-              </div>
-              <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">投放场景</span>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">核心投放场景承接</h2>
-            <p class="text-lg text-gray-500 mb-6">覆盖电商广告核心投放场景</p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">全域推广</div>
-                  <div class="text-gray-500 text-sm">支持全域推商品、全域推直播、标准推广等核心投放场景</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">场景适配</div>
-                  <div class="text-gray-500 text-sm">适配商品打品、直播间带货、素材测试、计划补量等需求</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900">执行查看</div>
-                  <div class="text-gray-500 text-sm">支持按日期、账户、平台、计划等维度查看投放执行情况</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature 6: 投放任务与模板 + 放量治理 -->
-    <section class="py-20 bg-gray-50/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16">
-          <!-- 投放任务与模板 -->
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-600">auto_mode</span>
-              </div>
-              <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">批量执行</span>
-            </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">投放任务与模板</h2>
-            <p class="text-gray-500 mb-6">让批量投放可复用可追踪</p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900 text-sm">模板沉淀</div>
-                  <div class="text-gray-500 text-xs">支持投放模板沉淀常用计划搭建参数，减少重复配置</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900 text-sm">批量执行</div>
-                  <div class="text-gray-500 text-xs">支持创建投放任务，批量执行计划搭建、素材推送和账户投放</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900 text-sm">任务追踪</div>
-                  <div class="text-gray-500 text-xs">可查看任务状态、任务进度、成功/失败计划数量、创建人和创建时间</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- 放量治理 -->
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <span class="material-symbols-outlined text-emerald-600">monitoring</span>
-              </div>
-              <span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">放量治理</span>
-            </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">异常检测与素材清理</h2>
-            <p class="text-gray-500 mb-6">补足投流后的风险治理</p>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900 text-sm">异常检测</div>
-                  <div class="text-gray-500 text-xs">支持对账户、计划或素材进行异常检测，帮助团队及时发现投放风险</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900 text-sm">素材清理</div>
-                  <div class="text-gray-500 text-xs">支持配置素材清理规则，按消耗、转化、周期等条件进行治理</div>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
-                <div>
-                  <div class="font-semibold text-gray-900 text-sm">规则管理</div>
-                  <div class="text-gray-500 text-xs">支持查看规则开关、检测周期、执行范围和清理结果</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Value Summary -->
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">使用场景与价值</h2>
-          <p class="text-gray-500 max-w-2xl mx-auto">商品投流模块让内容产出与广告投放无缝衔接，从"做完视频"升级为"跑出爆款"</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 text-center">
-            <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-              <span class="material-symbols-outlined text-emerald-600 text-2xl">bolt</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">上机更快</h3>
-            <p class="text-gray-500 text-sm">成片审核通过后直接推送至广告平台，省去下载上传的重复操作</p>
-          </div>
-          <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 text-center">
-            <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-              <span class="material-symbols-outlined text-emerald-600 text-2xl">copy_all</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">批量更高效</h3>
-            <p class="text-gray-500 text-sm">投放模板+批量任务，规模化执行不再依赖人工重复操作</p>
-          </div>
-          <div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 text-center">
-            <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-              <span class="material-symbols-outlined text-emerald-600 text-2xl">trending_up</span>
-            </div>
-            <h3 class="font-bold text-gray-900 mb-2">ROI更稳</h3>
-            <p class="text-gray-500 text-sm">异常检测与素材清理及时止损，爆款放量快速复制，整体ROI持续提升</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-20">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="rounded-3xl bg-gradient-to-br from-emerald-500 via-teal-500 to-emerald-600 p-10 md:p-16 text-white relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
-          <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
-          <div class="relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">让成片从"做完"升级为"卖爆"</h2>
-            <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">立即了解商品投流如何帮助您的团队打通内容到投放的全链路</p>
-            <div class="flex flex-wrap justify-center gap-4">
-              <a href="index.html#trial" class="bg-white text-emerald-600 px-8 py-3.5 rounded-full font-semibold hover:shadow-lg transition-all shadow-md">预约演示</a>
-              <a href="product-data.html" class="bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-semibold hover:bg-white/30 transition-all">了解数据复盘 →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-white border-t border-gray-100 pt-12 pb-8" id="about">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Top: Contact + Menu -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-3">
-        <!-- Left: Contact -->
-        <div class="lg:col-span-4">
-          <h4 class="font-bold text-gray-900 text-sm mb-5">联系我们</h4>
-          <div class="space-y-4">
-            <div class="flex items-center gap-3 text-sm text-gray-600">
-              <div class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600">
-                <span class="material-symbols-outlined text-base">phone</span>
-              </div>
-              <span>售前电话：18008627166</span>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex flex-col items-center">
-                <img src="images/qrcode-gongzhong.png" alt="公众号" class="w-20 h-20 rounded-xl border border-gray-100 object-cover shadow-sm">
-                <span class="text-xs text-gray-500 mt-2">微信公众号</span>
-              </div>
-              <div class="flex flex-col items-center">
-                <img src="images/qrcode-consultant.png" alt="专属顾问" class="w-20 h-20 rounded-xl border border-gray-100 object-cover shadow-sm">
-                <span class="text-xs text-gray-500 mt-2">专属顾问</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Menu Columns -->
-        <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-900 text-sm">产品</h4>
-            <ul class="space-y-3 text-sm text-gray-500">
-              <li><a href="products.html" class="hover:text-brand-600 transition-colors">产品功能</a></li>
-              <li><a href="pricing.html" class="hover:text-brand-600 transition-colors">功能价格</a></li>
-              <li><a href="#" class="hover:text-brand-600 transition-colors">功能演示</a></li>
-              <li><a href="#" class="hover:text-brand-600 transition-colors">更新日志</a></li>
-            </ul>
-          </div>
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-900 text-sm">帮助中心</h4>
-            <ul class="space-y-3 text-sm text-gray-500">
-              <li><a href="https://situohezhong.feishu.cn/wiki/Rp97wRMHliwsZVkUI5icRwK4n3e" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">视频教程</a></li>
-              <li><a href="https://situohezhong.feishu.cn/wiki/CffjwLIb3ihSJ9kElSgcfKx0nNh" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">使用手册</a></li>
-              <li>
-                <a href="#" class="relative inline-block hover:text-brand-600 transition-colors group">
+</div>
+</div>
+<div class="relative">
+<div class="rounded-2xl bg-gradient-to-br from-emerald-100 to-teal-50 border border-emerald-200/50 p-8 aspect-video flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-emerald-300 text-8xl">campaign</span>
+<p class="text-emerald-400 text-sm mt-4">功能演示占位</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 1: 商品承接 -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-emerald-200 text-8xl">shopping_bag</span>
+<p class="text-emerald-300 text-sm mt-4">商品承接演示占位</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">shopping_bag</span>
+</div>
+<span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">商品承接</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">商品承接</h2>
+<p class="text-lg text-gray-500 mb-6">用商品串联内容与投放结果</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">商品视角管理</div>
+<div class="text-gray-500 text-sm">支持围绕商品建立投放和内容经营视角</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">数据关联</div>
+<div class="text-gray-500 text-sm">支持商品与项目、素材、成片、广告数据形成关联</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">业务决策支撑</div>
+<div class="text-gray-500 text-sm">帮助团队从"这条视频表现如何"进一步看到"这个商品是否值得继续打"</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 2: 商品合集 -->
+<section class="py-20 bg-gray-50/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">collections_bookmark</span>
+</div>
+<span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">商品合集</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">商品合集</h2>
+<p class="text-lg text-gray-500 mb-6">围绕打品对象集中管理数据</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">商品信息管理</div>
+<div class="text-gray-500 text-sm">支持创建商品合集，沉淀商品图片、名称、链接、所属项目、备注等信息</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">投放指标查看</div>
+<div class="text-gray-500 text-sm">支持查看商品消耗、转化、成交、ROI等投放指标</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">决策辅助</div>
+<div class="text-gray-500 text-sm">帮助团队围绕商品判断继续测试、暂停止损或加大放量</div>
+</div>
+</li>
+</ul>
+</div>
+<div>
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-emerald-200 text-8xl">collections_bookmark</span>
+<p class="text-emerald-300 text-sm mt-4">商品合集演示占位</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 3: 投流承接 -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-emerald-200 text-8xl">send</span>
+<p class="text-emerald-300 text-sm mt-4">投流承接演示占位</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">send</span>
+</div>
+<span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">投流承接</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">投流承接</h2>
+<p class="text-lg text-gray-500 mb-6">打通内容制作与广告投放链路</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">一键推送</div>
+<div class="text-gray-500 text-sm">支持审核后的成片直接推送至广告平台，减少重复下载上传</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">路径缩短</div>
+<div class="text-gray-500 text-sm">缩短从"视频做完"到"广告上机"的执行路径</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">快速验证</div>
+<div class="text-gray-500 text-sm">让内容团队产出的成片更快进入卖货验证环节</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 4: 多平台多账户管理 -->
+<section class="py-20 bg-gray-50/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">account_tree</span>
+</div>
+<span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">多平台管理</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">多平台多账户管理</h2>
+<p class="text-lg text-gray-500 mb-6">适配真实广告执行环境</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">统一承接</div>
+<div class="text-gray-500 text-sm">支持围绕多个广告平台、多个广告账户进行统一承接和管理</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">主流平台覆盖</div>
+<div class="text-gray-500 text-sm">覆盖巨量千川、巨量广告、腾讯广告、磁力金牛等平台能力</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">账户管理</div>
+<div class="text-gray-500 text-sm">支持账号授权、状态查看、数据同步、负责人和协作者管理</div>
+</div>
+</li>
+</ul>
+</div>
+<div>
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-emerald-200 text-8xl">account_tree</span>
+<p class="text-emerald-300 text-sm mt-4">多平台管理演示占位</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 5: 核心投放场景 -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 aspect-[4/3] flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-emerald-200 text-8xl">rocket_launch</span>
+<p class="text-emerald-300 text-sm mt-4">投放场景演示占位</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">rocket_launch</span>
+</div>
+<span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">投放场景</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 mb-4">核心投放场景承接</h2>
+<p class="text-lg text-gray-500 mb-6">覆盖电商广告核心投放场景</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">全域推广</div>
+<div class="text-gray-500 text-sm">支持全域推商品、全域推直播、标准推广等核心投放场景</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">场景适配</div>
+<div class="text-gray-500 text-sm">适配商品打品、直播间带货、素材测试、计划补量等需求</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900">执行查看</div>
+<div class="text-gray-500 text-sm">支持按日期、账户、平台、计划等维度查看投放执行情况</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature 6: 投放任务与模板 + 放量治理 -->
+<section class="py-20 bg-gray-50/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-16">
+<!-- 投放任务与模板 -->
+<div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">auto_mode</span>
+</div>
+<span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">批量执行</span>
+</div>
+<h2 class="text-2xl font-bold text-gray-900 mb-4">投放任务与模板</h2>
+<p class="text-gray-500 mb-6">让批量投放可复用可追踪</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900 text-sm">模板沉淀</div>
+<div class="text-gray-500 text-xs">支持投放模板沉淀常用计划搭建参数，减少重复配置</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900 text-sm">批量执行</div>
+<div class="text-gray-500 text-xs">支持创建投放任务，批量执行计划搭建、素材推送和账户投放</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900 text-sm">任务追踪</div>
+<div class="text-gray-500 text-xs">可查看任务状态、任务进度、成功/失败计划数量、创建人和创建时间</div>
+</div>
+</li>
+</ul>
+</div>
+<!-- 放量治理 -->
+<div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">monitoring</span>
+</div>
+<span class="text-sm font-semibold text-emerald-600 uppercase tracking-wider">放量治理</span>
+</div>
+<h2 class="text-2xl font-bold text-gray-900 mb-4">异常检测与素材清理</h2>
+<p class="text-gray-500 mb-6">补足投流后的风险治理</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900 text-sm">异常检测</div>
+<div class="text-gray-500 text-xs">支持对账户、计划或素材进行异常检测，帮助团队及时发现投放风险</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900 text-sm">素材清理</div>
+<div class="text-gray-500 text-xs">支持配置素材清理规则，按消耗、转化、周期等条件进行治理</div>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-500 mt-0.5">check_circle</span>
+<div>
+<div class="font-semibold text-gray-900 text-sm">规则管理</div>
+<div class="text-gray-500 text-xs">支持查看规则开关、检测周期、执行范围和清理结果</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Value Summary -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">使用场景与价值</h2>
+<p class="text-gray-500 max-w-2xl mx-auto">商品投流模块让内容产出与广告投放无缝衔接，从"做完视频"升级为"跑出爆款"</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 text-center">
+<div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-emerald-600 text-2xl">bolt</span>
+</div>
+<h3 class="font-bold text-gray-900 mb-2">上机更快</h3>
+<p class="text-gray-500 text-sm">成片审核通过后直接推送至广告平台，省去下载上传的重复操作</p>
+</div>
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 text-center">
+<div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-emerald-600 text-2xl">copy_all</span>
+</div>
+<h3 class="font-bold text-gray-900 mb-2">批量更高效</h3>
+<p class="text-gray-500 text-sm">投放模板+批量任务，规模化执行不再依赖人工重复操作</p>
+</div>
+<div class="rounded-2xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 text-center">
+<div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-emerald-600 text-2xl">trending_up</span>
+</div>
+<h3 class="font-bold text-gray-900 mb-2">ROI更稳</h3>
+<p class="text-gray-500 text-sm">异常检测与素材清理及时止损，爆款放量快速复制，整体ROI持续提升</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="py-20">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="rounded-3xl bg-gradient-to-br from-emerald-500 via-teal-500 to-emerald-600 p-10 md:p-16 text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
+<div class="relative z-10">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">让成片从"做完"升级为"卖爆"</h2>
+<p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">立即了解商品投流如何帮助您的团队打通内容到投放的全链路</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a class="bg-white text-emerald-600 px-8 py-3.5 rounded-full font-semibold hover:shadow-lg transition-all shadow-md" href="index.html#trial">预约演示</a>
+<a class="bg-white/20 text-white border border-white/30 px-8 py-3.5 rounded-full font-semibold hover:bg-white/30 transition-all" href="product-data.html">了解数据复盘 →</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-gray-100 pt-12 pb-8" id="about">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Top: Contact + Menu -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-3">
+<!-- Left: Contact -->
+<div class="lg:col-span-4">
+<h4 class="font-bold text-gray-900 text-sm mb-5">联系我们</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-sm text-gray-600">
+<div class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600">
+<span class="material-symbols-outlined text-base">phone</span>
+</div>
+<span>售前电话：18008627166</span>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<img alt="公众号" class="w-20 h-20 rounded-xl border border-gray-100 object-cover shadow-sm" src="images/qrcode-gongzhong.png"/>
+<span class="text-xs text-gray-500 mt-2">微信公众号</span>
+</div>
+<div class="flex flex-col items-center">
+<img alt="专属顾问" class="w-20 h-20 rounded-xl border border-gray-100 object-cover shadow-sm" src="images/qrcode-consultant.png"/>
+<span class="text-xs text-gray-500 mt-2">专属顾问</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Menu Columns -->
+<div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="space-y-4">
+<h4 class="font-bold text-gray-900 text-sm">产品</h4>
+<ul class="space-y-3 text-sm text-gray-500">
+<li><a class="hover:text-brand-600 transition-colors" href="products.html">产品功能</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="pricing.html">功能价格</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="#">功能演示</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="#">更新日志</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-gray-900 text-sm">帮助中心</h4>
+<ul class="space-y-3 text-sm text-gray-500">
+<li><a class="hover:text-brand-600 transition-colors" href="https://situohezhong.feishu.cn/wiki/Rp97wRMHliwsZVkUI5icRwK4n3e" rel="noopener noreferrer" target="_blank">视频教程</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="https://situohezhong.feishu.cn/wiki/CffjwLIb3ihSJ9kElSgcfKx0nNh" rel="noopener noreferrer" target="_blank">使用手册</a></li>
+<li>
+<a class="relative inline-block hover:text-brand-600 transition-colors group" href="#">
                   专属顾问
                   <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-white p-2 rounded-lg shadow-xl border border-gray-100 w-32 text-center z-50 pointer-events-none">
-                    <img src="images/qrcode-consultant.png" alt="专属顾问二维码" class="w-full h-auto rounded">
-                    <span class="block text-[10px] text-gray-500 mt-1 leading-tight">扫码咨询专属顾问</span>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-900 text-sm">关于我们</h4>
-            <ul class="space-y-3 text-sm text-gray-500">
-              <li><a href="about.html" class="hover:text-brand-600 transition-colors">公司介绍</a></li>
-            </ul>
-          </div>
-          <div class="space-y-4">
-            <h4 class="font-bold text-gray-900 text-sm">旗下产品</h4>
-            <ul class="space-y-3 text-sm text-gray-500">
-              <li><a href="https://kol.9466.com/home" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">9466达人营销</a></li>
-              <li><a href="https://9466.com/" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">9466创作助手</a></li>
-              <li><a href="http://newsapp.cmstop.com/" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">智媒管家</a></li>
-              <li><a href="https://www.cmstop.com/" target="_blank" class="hover:text-brand-600 transition-colors" rel="noopener noreferrer">CmsTop</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Middle: Introduction (logo + auto-width text) -->
-      <div class="py-3">
-        <div class="rounded-2xl bg-gray-50/70 p-6 md:p-8">
-          <div class="flex flex-col md:flex-row items-start gap-6">
-            <img src="images/logo.png" alt="视频大脑" class="h-10 w-auto shrink-0">
-            <p class="text-gray-600 text-sm leading-relaxed">
+<img alt="专属顾问二维码" class="w-full h-auto rounded" src="images/qrcode-consultant.png"/>
+<span class="block text-[10px] text-gray-500 mt-1 leading-tight">扫码咨询专属顾问</span>
+</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-gray-900 text-sm">关于我们</h4>
+<ul class="space-y-3 text-sm text-gray-500">
+<li><a class="hover:text-brand-600 transition-colors" href="about.html">公司介绍</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-gray-900 text-sm">旗下产品</h4>
+<ul class="space-y-3 text-sm text-gray-500">
+<li><a class="hover:text-brand-600 transition-colors" href="https://kol.9466.com/home" rel="noopener noreferrer" target="_blank">9466达人营销</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="https://9466.com/" rel="noopener noreferrer" target="_blank">9466创作助手</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="http://newsapp.cmstop.com/" rel="noopener noreferrer" target="_blank">智媒管家</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="https://www.cmstop.com/" rel="noopener noreferrer" target="_blank">CmsTop</a></li>
+<li><a class="hover:text-brand-600 transition-colors" href="https://www.crebee.cn/" rel="noopener noreferrer" target="_blank">Crebee</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Middle: Introduction (logo + auto-width text) -->
+<div class="py-3">
+<div class="rounded-2xl bg-gray-50/70 p-6 md:p-8">
+<div class="flex flex-col md:flex-row items-start gap-6">
+<img alt="视频大脑" class="h-10 w-auto shrink-0" src="images/logo.png"/>
+<p class="text-gray-600 text-sm leading-relaxed">
               视频大脑是一套帮助企业持续复制爆款内容的生产协同平台。它打通从创意、拍摄、剪辑、审核、投流到复盘的全流程，让每一条素材有沉淀、每一次投放有反馈、每一个爆款有方法论。企业不再依赖“某个厉害的人”，而是建立起可复制、可管理、可持续增长的内容生产体系。
             </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="pt-3 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
-        <div>备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备09082107号-15</a></div>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-brand-600 transition-colors">隐私政策</a>
-          <a href="#" class="hover:text-brand-600 transition-colors">服务条款</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-3 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+<div>备案号：<a href="https://beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">京ICP备09082107号-15</a></div>
+<div class="flex gap-6">
+<a class="hover:text-brand-600 transition-colors" href="#">隐私政策</a>
+<a class="hover:text-brand-600 transition-colors" href="#">服务条款</a>
+</div>
+</div>
+</div>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>

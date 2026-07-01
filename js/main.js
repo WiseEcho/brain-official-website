@@ -498,7 +498,14 @@
   if (els.heroVideo) {
     let isProgressDragging = false;
 
-    // 首屏演示视频默认自动静音循环播放，但客户需要能随时暂停、回看和开关声音。
+    // 首屏演示视频默认自动循环播放并开启声音，用户仍可暂停、回看和开关声音。
+    els.heroVideo.muted = false;
+    const autoPlayPromise = els.heroVideo.play();
+    if (autoPlayPromise && typeof autoPlayPromise.catch === 'function') {
+      autoPlayPromise.catch(function () {
+        syncPlayState();
+      });
+    }
     function formatVideoTime(seconds) {
       if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
       const totalSeconds = Math.floor(seconds);
