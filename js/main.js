@@ -21,7 +21,7 @@
     heroSection: document.getElementById('hero'),
     footer: document.querySelector('footer'),
     featureTabs: document.getElementById('feature-tabs'),
-    heroVideo: document.querySelector('video[src*="hero-video"]'),
+    heroVideo: document.getElementById('hero-video'),
     heroVideoPlayToggle: document.getElementById('hero-video-play-toggle'),
     heroVideoPlayIcon: document.getElementById('hero-video-play-icon'),
     heroVideoProgress: document.getElementById('hero-video-progress'),
@@ -498,13 +498,42 @@
   if (els.heroVideo) {
     let isProgressDragging = false;
 
-    // 首屏演示视频默认自动循环播放并开启声音，用户仍可暂停、回看和开关声音。
-    els.heroVideo.muted = false;
-    const autoPlayPromise = els.heroVideo.play();
-    if (autoPlayPromise && typeof autoPlayPromise.catch === 'function') {
-      autoPlayPromise.catch(function () {
-        syncPlayState();
-      });
+    // 浏览器策略要求静音才可自动播放；用户可通过按钮手动开声音。
+    els.heroVideo.muted = true;
+    const tryPlayHeroVideo = function () {
+      const playPromise = els.heroVideo.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {
+          syncPlayState();
+        });
+      }
+    };
+    // 视频源延迟注入：等 load 事件后再拉取 22MB 视频，既不与首屏资源抢带宽，
+    // 也避免 load 事件被视频下载阻塞（Slow 4G 实测曾被拖到 20s+）。
+    // 仅在大屏（视频列可见）时加载；小屏由上方的移除逻辑处理，不消耗流量。
+    if (els.heroVideo.dataset.src) {
+      const loadHeroVideo = function () {
+        if (!els.heroVideo || els.heroVideo.dataset.loaded) return;
+        if (!window.matchMedia('(min-width: 1024px)').matches) return;
+        els.heroVideo.dataset.loaded = '1';
+        els.heroVideo.src = els.heroVideo.dataset.src;
+        els.heroVideo.load();
+        tryPlayHeroVideo();
+      };
+      const scheduleHeroVideo = function () {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadHeroVideo, { timeout: 2500 });
+        } else {
+          setTimeout(loadHeroVideo, 1200);
+        }
+      };
+      if (document.readyState === 'complete') {
+        scheduleHeroVideo();
+      } else {
+        window.addEventListener('load', scheduleHeroVideo);
+      }
+    } else {
+      tryPlayHeroVideo();
     }
     function formatVideoTime(seconds) {
       if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
