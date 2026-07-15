@@ -193,62 +193,142 @@
   });
 
   /* ========================================
-     表单处理
+     留资表单 → 飞书群机器人（一步提交，2026-07-15 由两步跳转改为 webhook 直发）
      ======================================== */
+
+  // 飞书群自定义机器人 webhook（群设置 → 群机器人 → 添加机器人 → 自定义机器人 获取）
+  // 注意：该地址与密钥只能用于向本群发消息，泄露风险可控；如被滥用可在飞书后台吊销重建。
+  const FEISHU_BOT_WEBHOOK = 'https://open.feishu.cn/open-apis/bot/v2/hook/4207bff3-a93e-43d9-a14e-b6f6aabddb9f';
+  const FEISHU_BOT_SECRET = 'HU6ltD2PX86btAsp52Bhg';
+
+  // 飞书签名：Base64(HMAC-SHA256(key = "timestamp\n密钥", data = 空))
+  const feishuSign = async function (secret) {
+    const timestamp = Math.floor(Date.now() / 1000).toString();
+    const key = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(timestamp + '\n' + secret),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    );
+    const sig = await crypto.subtle.sign('HMAC', key, new Uint8Array(0));
+    return { timestamp: timestamp, sign: btoa(String.fromCharCode.apply(null, new Uint8Array(sig))) };
+  };
 
   const trialForm = document.getElementById('trial-form');
   if (trialForm) {
-    trialForm.addEventListener('submit', function (e) {
+    const submitBtn = trialForm.querySelector('button[type="submit"]');
+    const errorEl = document.getElementById('trial-form-error');
+    const successEl = document.getElementById('trial-success');
+
+    const showError = function (msg) {
+      if (!errorEl) return;
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
+    };
+    const hideError = function () {
+      if (errorEl) errorEl.classList.add('hidden');
+    };
+
+    const buildCardPayload = function (lead, time) {
+      return {
+        msg_type: 'interactive',
+        card: {
+          config: { wide_screen_mode: true },
+          header: {
+            title: { tag: 'plain_text', content: '🎯 官网新线索：预约演示' },
+            template: 'violet'
+          },
+          elements: [
+            {
+              tag: 'div',
+              fields: [
+                { is_short: true, text: { tag: 'lark_md', content: '**姓名**\n' + lead.name } },
+                { is_short: true, text: { tag: 'lark_md', content: '**电话**\n' + lead.phone } }
+              ]
+            },
+            {
+              tag: 'div',
+              fields: [
+                { is_short: true, text: { tag: 'lark_md', content: '**公司名称**\n' + (lead.company || '未填写') } },
+                { is_short: true, text: { tag: 'lark_md', content: '**团队规模**\n' + (lead.teamSize || '未选择') } }
+              ]
+            },
+            { tag: 'note', elements: [{ tag: 'plain_text', content: '来源：官网首页留资表单 · ' + time }] }
+          ]
+        }
+      };
+    };
+
+    const buildTextPayload = function (lead, time) {
+      return {
+        msg_type: 'text',
+        content: {
+          text: '🎯 官网新线索：预约演示\n姓名：' + lead.name + '\n电话：' + lead.phone +
+            '\n公司：' + (lead.company || '未填写') + '\n团队规模：' + (lead.teamSize || '未选择') + '\n时间：' + time
+        }
+      };
+    };
+
+    const postToFeishu = async function (payload) {
+      const auth = await feishuSign(FEISHU_BOT_SECRET);
+      const resp = await fetch(FEISHU_BOT_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.assign({ timestamp: auth.timestamp, sign: auth.sign }, payload))
+      });
+      const result = await resp.json().catch(function () { return { code: -1 }; });
+      return result && result.code === 0;
+    };
+
+    trialForm.addEventListener('submit', async function (e) {
       e.preventDefault();
+      hideError();
 
-      const formData = new FormData(trialForm);
-      const data = Object.fromEntries(formData.entries());
+      const data = Object.fromEntries(new FormData(trialForm).entries());
+      const lead = {
+        name: (data.name || '').trim(),
+        phone: (data.phone || '').trim(),
+        company: (data.company || '').trim(),
+        teamSize: (data['team-size'] || '').trim()
+      };
 
-      // 必填字段校验，给出明确提示
-      const name = (data.name || '').trim();
-      const phone = (data.phone || '').trim();
-      if (!name) {
-        alert('请填写姓名');
+      if (!lead.name) {
+        showError('请填写姓名');
         trialForm.querySelector('[name="name"]').focus();
         return;
       }
-      if (!phone) {
-        alert('请填写手机号');
+      if (!/^1[3-9]\d{9}$/.test(lead.phone)) {
+        showError('请填写正确的 11 位手机号');
         trialForm.querySelector('[name="phone"]').focus();
         return;
       }
 
-      // 飞书多维表格表单预填充配置
-      // 飞书预填充参数格式：prefill_问题名称=值，问题名称必须与表单字段标题完全一致
-      const feishuFormBase = 'https://situohezhong.feishu.cn/share/base/form/shrcna7QkvJxucOyDTtfpel55Gc';
-      const fieldMapping = {
-        name: 'prefill_姓名',
-        phone: 'prefill_电话',
-        company: 'prefill_公司名称',
-        'team-size': 'prefill_内容团队人数'
-      };
-
-      const params = new URLSearchParams();
-      for (const [localKey, feishuKey] of Object.entries(fieldMapping)) {
-        const value = data[localKey];
-        if (value) {
-          params.append(feishuKey, String(value));
-        }
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '提交中…';
       }
 
-      const feishuUrl = params.toString()
-        ? `${feishuFormBase}?${params.toString()}`
-        : feishuFormBase;
+      const time = new Date().toLocaleString('zh-CN', { hour12: false });
+      let ok = false;
+      try {
+        ok = await postToFeishu(buildCardPayload(lead, time));
+        if (!ok) ok = await postToFeishu(buildTextPayload(lead, time));
+      } catch (err) {
+        ok = false;
+      }
 
-      const newWindow = window.open(feishuUrl, '_blank', 'noopener,noreferrer');
-      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-        // 弹窗被拦截时给出提示，用户确认后使用当前页跳转作为兜底
-        if (confirm('预约页面被浏览器拦截，是否在当前页面打开？')) {
-          window.location.href = feishuUrl;
-          return;
+      if (ok) {
+        trialForm.classList.add('hidden');
+        if (successEl) successEl.classList.remove('hidden');
+      } else {
+        showError('提交失败，请稍后重试；也可直接拨打售前电话 18008627166 联系我们。');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
         }
       }
-      trialForm.reset();
     });
   }
 
