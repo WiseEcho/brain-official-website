@@ -1,12 +1,31 @@
 services:
+  # 固定本地开发环境：挂载源码目录，改代码后刷新浏览器即可生效
+  # 用法：docker compose up -d web → http://localhost:18080
   web:
     image: nginx:1.30.3-alpine
     container_name: brain-official-website-local
     ports:
       - "18080:80"
     volumes:
-      # 挂载源码目录，修改后刷新浏览器即可生效
       - ./:/usr/share/nginx/html:ro
-      # 使用项目自带的 nginx 配置（包含旧路径兼容、缓存规则等）
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    # 如果本地没有 nginx:1.30.3-alpine，Docker 会自动拉取
+
+  # 固定镜像验证环境：按 Dockerfile 构建生产镜像并运行，用于部署前验证
+  # 用法：docker compose --profile prod-preview up -d --build prod-preview → http://localhost:18081
+  # ⚠️ Apple Silicon Mac 上必须先拉取 amd64 基础镜像，否则构建出 arm64 镜像部署到 x86 节点会 500：
+  #   docker pull --platform linux/amd64 nginx:1.30.3-alpine
+  prod-preview:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IMAGE_TAG: local-preview
+      # 生产节点为 x86：必须显式指定 amd64，禁止省略（2026-07-14 事故教训）
+      platforms:
+        - linux/amd64
+    image: d-x.cmstop.net/brain-official-website:local-preview
+    container_name: brain-official-website-prod-preview
+    ports:
+      - "18081:80"
+    profiles:
+      - prod-preview
