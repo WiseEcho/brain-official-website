@@ -364,8 +364,8 @@
       });
     });
 
-    // 移动端默认微信优先（一键唤醒比填表更顺），桌面端默认表单
-    setActiveTab(window.matchMedia('(min-width: 768px)').matches ? 'form' : 'wecom');
+    // 双端默认微信优先（一键唤醒转化路径最短）
+    setActiveTab('wecom');
   }
 
   /* ========================================
