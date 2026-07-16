@@ -333,6 +333,42 @@
   }
 
   /* ========================================
+     预约方式切换（移动端默认微信优先）
+     ======================================== */
+
+  const trialTabs = document.getElementById('trial-tabs');
+  if (trialTabs) {
+    const tabButtons = trialTabs.querySelectorAll('button[data-tab]');
+    const panels = {
+      form: document.getElementById('trial-panel-form'),
+      wecom: document.getElementById('trial-panel-wecom'),
+    };
+
+    const setActiveTab = function (name) {
+      tabButtons.forEach(function (btn) {
+        const isActive = btn.dataset.tab === name;
+        btn.classList.toggle('bg-white', isActive);
+        btn.classList.toggle('text-gray-900', isActive);
+        btn.classList.toggle('shadow-sm', isActive);
+        btn.classList.toggle('text-gray-500', !isActive);
+        btn.setAttribute('aria-selected', String(isActive));
+      });
+      Object.keys(panels).forEach(function (key) {
+        if (panels[key]) panels[key].classList.toggle('hidden', key !== name);
+      });
+    };
+
+    tabButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setActiveTab(btn.dataset.tab);
+      });
+    });
+
+    // 移动端默认微信优先（一键唤醒比填表更顺），桌面端默认表单
+    setActiveTab(window.matchMedia('(min-width: 768px)').matches ? 'form' : 'wecom');
+  }
+
+  /* ========================================
      功能预览 (顶部Tab + 下方GIF展示)
      ======================================== */
 
