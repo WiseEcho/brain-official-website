@@ -192,6 +192,25 @@
     });
   });
 
+  // 带锚点打开页面时，懒加载图片就位会造成布局位移，load 后校正一次落点
+  if (location.hash) {
+    const anchorTarget = document.querySelector(location.hash);
+    if (anchorTarget) {
+      const rescroll = function () {
+        const headerHeight = els.header ? els.header.offsetHeight : 64;
+        const top = anchorTarget.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+        window.scrollTo({ top: top, behavior: 'auto' });
+      };
+      if (document.readyState === 'complete') {
+        setTimeout(rescroll, 300);
+      } else {
+        window.addEventListener('load', function () {
+          setTimeout(rescroll, 300);
+        });
+      }
+    }
+  }
+
   /* ========================================
      留资表单 → 飞书群机器人（一步提交，2026-07-15 由两步跳转改为 webhook 直发）
      ======================================== */
