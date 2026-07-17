@@ -19,7 +19,7 @@
 <link href="css/material-symbols.css" rel="stylesheet"/>
 <!-- Custom Styles -->
 <link href="css/main.css?v=20260716-4" rel="stylesheet"/>
-<link href="css/tailwind.css?v=20260716-4" rel="stylesheet"/>
+<link href="css/tailwind.css?v=20260717-7" rel="stylesheet"/>
 <!-- Canonical -->
 <link href="https://www.shipindanao.com/" rel="canonical"/>
 <!-- Open Graph -->
@@ -261,54 +261,16 @@
               );
             background-size: 60px 60px;
           "></div>
+<!-- 移动端底部固定 CTA 触发哨兵：位于 Hero 内 100px 处，滑过即显示 CTA -->
+<div class="absolute top-[100px] left-0 right-0 h-px pointer-events-none z-0" id="cta-sentinel"></div>
 <!-- 顶部光晕 -->
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] lg:w-[1000px] h-[450px] lg:h-[500px] bg-gradient-radial from-brand-200/20 via-transparent to-transparent rounded-full blur-3xl pointer-events-none"></div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-7 lg:gap-9 xl:gap-10 items-center justify-items-center">
-<!-- Left: Text Content -->
-<div class="max-w-xl w-full">
-<!-- Title -->
-<h1 class="mb-6 lg:mb-8 xl:mb-10">
-<span class="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold border border-brand-200/60 shadow-sm mb-4 lg:mb-5">
-<span class="material-symbols-outlined text-[16px]">electric_bolt</span>
-                视频大脑 · AI驱动的爆款视频生产线
-              </span>
-<span class="block text-[1.875rem] md:text-[3.25rem] lg:text-[2.375rem] xl:text-[3rem] 2xl:text-[3.25rem] font-bold tracking-tight text-gray-900 leading-[1.12] lg:leading-[1.15] mb-3 text-balance">
-                让内容电商团队效能提升
-              </span>
-<span class="inline-block text-[5rem] md:text-[6.5rem] lg:text-[5.5rem] xl:text-[6rem] 2xl:text-[7rem] font-black tracking-tighter leading-none" style="
-                  background-image: linear-gradient(
-                    135deg,
-                    #f97316 0%,
-                    #8b5cf6 50%,
-                    #3b82f6 100%
-                  );
-                  background-clip: text;
-                  -webkit-background-clip: text;
-                  -webkit-text-fill-color: transparent;
-                ">
-                300%
-              </span>
-</h1>
-<p class="text-gray-500 text-base lg:text-lg mb-6 lg:mb-8 xl:mb-10 leading-relaxed">
-              AI 拆解爆款视频，系统化管理素材与剪辑协作，一键推送多平台投放，数据实时回流指导再生产，让内容电商团队的视频产出从"靠灵感"变成"靠系统"。
-            </p>
-<!-- CTA Buttons -->
-<div class="flex flex-col sm:flex-row gap-3 lg:gap-4">
-<a class="w-full sm:w-auto bg-gradient-to-r from-brand-600 to-purple-600 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-2xl font-semibold hover:shadow-xl hover:shadow-brand-500/25 hover:-translate-y-0.5 transition-all text-base lg:text-lg flex flex-col items-center justify-center shadow-lg shadow-brand-500/20" href="https://vms.9466.com/" rel="noopener noreferrer" target="_blank">
-<span>立即免费试用</span>
-<span class="text-xs font-normal opacity-80 mt-1">突破增长瓶颈，快速获取</span>
-</a>
-<a class="w-full sm:w-auto px-6 lg:px-8 py-3 lg:py-4 rounded-2xl font-medium text-gray-600 bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:shadow-lg transition-all text-base lg:text-lg flex flex-col items-center justify-center shadow-sm" href="index.html#trial-booking">
-<span>预约演示产品</span>
-<span class="text-xs font-normal text-gray-400 mt-1">1v1专属演示，带您上手</span>
-</a>
-</div>
-</div>
-<!-- Right: Product Demo Video + Stats -->
-<div class="relative hidden lg:flex flex-col gap-4 lg:gap-6 max-w-xl w-full">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-9 xl:gap-10 items-center justify-items-center">
+<!-- Video + Stats: mobile first, desktop right -->
+<div class="relative order-1 lg:order-2 flex flex-col gap-4 lg:gap-6 max-w-xl w-full">
 <!-- Video -->
 <div class="group relative rounded-2xl overflow-hidden shadow-2xl shadow-brand-500/10 border border-gray-100 bg-gray-900" id="hero-video-card" style="background:#111827 url('images/hero-video-poster.jpg') center/cover no-repeat">
-<video class="w-full h-full object-cover aspect-video cursor-pointer" id="hero-video" loop="" playsinline="" muted="" preload="none" data-src="images/hero-video.mp4"></video>
+<video class="w-full h-full object-cover aspect-video cursor-pointer" id="hero-video" loop="" playsinline="" preload="none" data-src="images/hero-video.mp4"></video>
 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent px-4 pb-3 pt-8 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
 <div class="flex items-center gap-2.5 text-white">
 <button aria-label="暂停视频" class="w-8 h-8 rounded-full bg-white/85 hover:bg-white text-brand-600 flex items-center justify-center backdrop-blur-md ring-1 ring-brand-200/70 shadow-sm transition-colors" id="hero-video-play-toggle" type="button">
@@ -325,8 +287,8 @@
 </div>
 </div>
 </div>
-<!-- Stats -->
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 glassmorphism p-3 lg:p-3.5 xl:p-4 rounded-2xl">
+<!-- Stats: desktop only -->
+<div class="hidden lg:grid grid-cols-2 sm:grid-cols-4 gap-3 glassmorphism p-3 lg:p-3.5 xl:p-4 rounded-2xl">
 <div class="text-center">
 <div class="flex items-center justify-center gap-1 mb-1">
 <span class="material-symbols-outlined text-sm lg:text-base text-brand-500">groups</span>
@@ -366,6 +328,52 @@
 </div>
 <!-- 装饰光晕 -->
 <div class="absolute -inset-4 bg-gradient-to-r from-brand-500/10 via-purple-500/10 to-blue-500/10 rounded-3xl blur-2xl -z-10"></div>
+</div>
+<!-- Text Content: mobile second, desktop left -->
+<div class="order-2 lg:order-1 max-w-xl w-full">
+<!-- Title -->
+<h1 class="mb-6 lg:mb-8 xl:mb-10">
+<span class="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold border border-brand-200/60 shadow-sm mb-4 lg:mb-5">
+<span class="material-symbols-outlined text-[16px]">electric_bolt</span>
+                视频大脑 · AI驱动的爆款视频生产线
+              </span>
+<span class="block text-[1.875rem] md:text-[3.25rem] lg:text-[2.375rem] xl:text-[3rem] 2xl:text-[3.25rem] font-bold tracking-tight text-gray-900 leading-[1.12] lg:leading-[1.15] mb-3 text-balance">
+                让内容电商团队效能提升
+              </span>
+<span class="inline-block text-[5rem] md:text-[6.5rem] lg:text-[5.5rem] xl:text-[6rem] 2xl:text-[7rem] font-black tracking-tighter leading-none" style="
+                  background-image: linear-gradient(
+                    135deg,
+                    #f97316 0%,
+                    #8b5cf6 50%,
+                    #3b82f6 100%
+                  );
+                  background-clip: text;
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                ">
+                300%
+              </span>
+</h1>
+<p class="text-gray-500 text-base lg:text-lg mb-6 lg:mb-8 xl:mb-10 leading-relaxed">
+              AI 拆解爆款视频，系统化管理素材与剪辑协作，一键推送多平台投放，数据实时回流指导再生产，让内容电商团队的视频产出从"靠灵感"变成"靠系统"。
+            </p>
+<!-- CTA Buttons -->
+<div class="flex flex-col lg:flex-row gap-3 lg:gap-4">
+<a class="hidden lg:flex whitespace-nowrap bg-white border-2 border-brand-600 text-brand-600 hover:bg-brand-50 px-6 lg:px-8 py-3 lg:py-4 rounded-2xl font-semibold hover:shadow-lg transition-all text-base lg:text-lg flex-col items-center justify-center shadow-sm" href="https://vms.9466.com/" rel="noopener noreferrer" target="_blank">
+<span>立即免费试用</span>
+<span class="text-xs font-normal opacity-80 mt-1">突破增长瓶颈，快速获取</span>
+</a>
+<a class="w-full lg:w-auto whitespace-nowrap bg-gradient-to-r from-brand-600 to-purple-600 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-2xl font-semibold hover:shadow-xl hover:shadow-brand-500/25 hover:-translate-y-0.5 transition-all text-base lg:text-lg flex flex-col items-center justify-center shadow-lg shadow-brand-500/20" href="index.html#trial-booking">
+<span>预约演示产品</span>
+<span class="hidden lg:inline text-xs font-normal opacity-80 mt-1">1v1专属演示，带您上手</span>
+</a>
+<a class="lg:hidden w-full lg:w-auto whitespace-nowrap bg-white border border-green-500 text-green-600 hover:bg-green-50 px-6 lg:px-8 py-3 lg:py-4 rounded-2xl font-semibold hover:shadow-lg transition-all text-base lg:text-lg flex flex-col items-center justify-center shadow-sm" href="https://work.weixin.qq.com/kfid/kfc3182d6644b415931" rel="noopener noreferrer" target="_blank">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+                  立即咨询专属顾问
+                </span>
+</a>
+</div>
 </div>
 </div>
 </section>
@@ -1433,9 +1441,9 @@
 <img alt="扫码添加企业微信" class="w-56 h-56 mx-auto rounded-2xl border border-gray-100 shadow-md" src="images/qrcode-consultant.png"/>
 <div class="text-xl font-bold text-gray-900 mt-5">微信扫码，立即预约</div>
 <p class="text-sm text-gray-500 mt-2 mb-5">专属顾问 1 对 1 为您演示产品、协助开通试用</p>
-<a class="inline-flex md:hidden items-center justify-center gap-2 px-8 py-3.5 rounded-full text-white font-bold text-base bg-green-500 hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30" href="https://work.weixin.qq.com/kfid/kfc3182d6644b415931" rel="noopener" target="_blank">
+<a class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-white font-bold text-base bg-green-500 hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30" href="https://work.weixin.qq.com/kfid/kfc3182d6644b415931" rel="noopener" target="_blank">
 <span class="material-symbols-outlined text-[22px]">forum</span>
-                一键添加企业微信
+                立即咨询专属顾问
 </a>
 </div>
 </div>
@@ -1658,12 +1666,12 @@
 </div>
 </footer>
 <!-- 移动端底部固定 CTA -->
-<div class="mobile-sticky-cta fixed bottom-0 left-0 right-0 h-16 bg-white border-t border-gray-100 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-40 px-4 py-2 flex items-center gap-3 md:hidden" id="mobile-sticky-cta">
-<a class="flex-1 h-11 flex items-center justify-center rounded-full border border-gray-200 text-gray-700 font-medium text-sm hover:bg-gray-50" href="index.html#trial-booking">
+<div class="mobile-sticky-cta fixed bottom-0 left-0 right-0 h-[4.5rem] bg-white border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-40 px-4 py-2.5 flex items-center gap-3 md:hidden" id="mobile-sticky-cta">
+<a class="flex-1 h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-purple-600 text-white font-bold text-base hover:shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5 transition-all" href="index.html#trial-booking">
         预约演示
       </a>
-<a class="flex-1 h-11 flex items-center justify-center rounded-full bg-gradient-primary text-white font-semibold text-sm hover:opacity-90" href="https://vms.9466.com/" rel="noopener noreferrer" target="_blank">
-        免费试用
+<a class="flex-1 h-12 flex items-center justify-center rounded-full bg-green-500 text-white font-bold text-base hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5 transition-all" href="https://work.weixin.qq.com/kfid/kfc3182d6644b415931" rel="noopener noreferrer" target="_blank">
+        咨询顾问
       </a>
 </div>
 <!-- ========================================
@@ -1684,6 +1692,6 @@
 </div>
 </div>
 <!-- Scripts -->
-<script src="js/main.js?v=20260716-4"></script>
+<script src="js/main.js?v=20260717-8"></script>
 </body>
 </html>

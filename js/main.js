@@ -19,7 +19,6 @@
     // Mobile optimization
     mobileStickyCta: document.getElementById('mobile-sticky-cta'),
     heroSection: document.getElementById('hero'),
-    footer: document.querySelector('footer'),
     featureTabs: document.getElementById('feature-tabs'),
     heroVideo: document.getElementById('hero-video'),
     heroVideoPlayToggle: document.getElementById('hero-video-play-toggle'),
@@ -32,14 +31,8 @@
   };
 
   /* ========================================
-     移动端不加载 Hero 视频
+     Hero 视频
      ======================================== */
-
-  if (els.heroVideo && window.innerWidth < 1024) {
-    els.heroVideo.remove();
-    els.heroVideo = null;
-    if (els.muteToggle) els.muteToggle.style.display = 'none';
-  }
 
   /* ========================================
      视频弹窗
@@ -633,27 +626,33 @@
   if (els.heroVideo) {
     let isProgressDragging = false;
 
-    // 浏览器策略要求静音才可自动播放；用户可通过按钮手动开声音。
-    els.heroVideo.muted = true;
+    // 默认不强制静音，优先尝试有声自动播放；若被浏览器策略阻止，再回退到静音播放。
     const tryPlayHeroVideo = function () {
       const playPromise = els.heroVideo.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(function () {
-          syncPlayState();
+          // 有声自动播放被阻止：回退到静音自动播放
+          els.heroVideo.muted = true;
+          const mutedPlayPromise = els.heroVideo.play();
+          if (mutedPlayPromise && typeof mutedPlayPromise.catch === 'function') {
+            mutedPlayPromise.catch(function () {
+              syncPlayState();
+            });
+          }
+          syncMuteState();
         });
       }
     };
     // 视频源延迟注入：等 load 事件后再拉取 22MB 视频，既不与首屏资源抢带宽，
     // 也避免 load 事件被视频下载阻塞（Slow 4G 实测曾被拖到 20s+）。
-    // 仅在大屏（视频列可见）时加载；小屏由上方的移除逻辑处理，不消耗流量。
     if (els.heroVideo.dataset.src) {
       const loadHeroVideo = function () {
         if (!els.heroVideo || els.heroVideo.dataset.loaded) return;
-        if (!window.matchMedia('(min-width: 1024px)').matches) return;
         els.heroVideo.dataset.loaded = '1';
         els.heroVideo.src = els.heroVideo.dataset.src;
         els.heroVideo.load();
-        tryPlayHeroVideo();
+        // 等待视频可播放后再尝试自动播放（优先有声，失败则回退静音）
+        els.heroVideo.addEventListener('canplay', tryPlayHeroVideo, { once: true });
       };
       const scheduleHeroVideo = function () {
         if ('requestIdleCallback' in window) {
@@ -770,24 +769,21 @@
      底部固定 CTA 条
      ======================================== */
 
-  if (els.mobileStickyCta && els.heroSection && els.footer) {
+  if (els.mobileStickyCta) {
+    const ctaSentinel = document.getElementById('cta-sentinel');
     const ctaObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
-          if (entry.target === els.heroSection) {
+          if (entry.target === ctaSentinel) {
+            // 哨兵离开视口 = 用户已向下滚动超过 100px，显示 CTA
             els.mobileStickyCta.classList.toggle('visible', !entry.isIntersecting);
-          } else if (entry.target === els.footer) {
-            if (entry.isIntersecting) {
-              els.mobileStickyCta.classList.remove('visible');
-            }
           }
         });
       },
       { threshold: 0 }
     );
 
-    ctaObserver.observe(els.heroSection);
-    ctaObserver.observe(els.footer);
+    if (ctaSentinel) ctaObserver.observe(ctaSentinel);
   }
 
   /* ========================================
