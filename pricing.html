@@ -2394,20 +2394,20 @@
       }
 
       function getPlanPrice(teamSize) {
-        if (teamSize <= 5) return 15000;
-        if (teamSize <= 10) return 30000;
-        if (teamSize <= 20) return 60000;
-        if (teamSize <= 30) return 90000;
-        if (teamSize <= 50) return 150000;
-        return 300000;
+        if (teamSize <= 10) return 15000;
+        if (teamSize <= 20) return 30000;
+        if (teamSize <= 30) return 48000;
+        if (teamSize <= 50) return 78000;
+        if (teamSize <= 100) return 148000;
+        return 280000;
       }
 
       function getPlanName(teamSize) {
-        if (teamSize <= 5) return '团队入门版';
-        if (teamSize <= 10) return '团队标准版';
-        if (teamSize <= 20) return '团队专业版';
-        if (teamSize <= 30) return '企业标准版';
-        if (teamSize <= 50) return '企业专业版';
+        if (teamSize <= 10) return '团队基础版';
+        if (teamSize <= 20) return '团队标准版';
+        if (teamSize <= 30) return '团队专业版';
+        if (teamSize <= 50) return '企业标准版';
+        if (teamSize <= 100) return '企业专业版';
         return '企业旗舰版';
       }
 
