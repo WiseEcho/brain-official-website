@@ -137,11 +137,17 @@
     .billing-toggle {
       display: inline-flex;
       align-items: center;
-      flex-wrap: wrap;
       background: #F3F4F6;
       border-radius: 100px;
       padding: 4px;
       position: relative;
+      overflow-x: auto;
+      max-width: 100%;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .billing-toggle::-webkit-scrollbar {
+      display: none;
     }
     .billing-toggle-btn {
       padding: 8px 24px;
@@ -155,6 +161,8 @@
       color: #6B7280;
       position: relative;
       z-index: 1;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .billing-toggle-btn.active {
       color: white;
@@ -1087,12 +1095,18 @@
     .billing-toggle {
       display: inline-flex;
       align-items: center;
-      flex-wrap: wrap;
       gap: 12px;
       background: #F3F4F6;
       padding: 6px;
       border-radius: 100px;
       margin-bottom: 8px;
+      overflow-x: auto;
+      max-width: 100%;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .billing-toggle::-webkit-scrollbar {
+      display: none;
     }
     .billing-toggle-btn {
       position: relative;
@@ -1106,6 +1120,8 @@
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .billing-toggle-btn.active {
       color: #7C3AED;
