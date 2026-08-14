@@ -2254,19 +2254,16 @@
       if (e.key === 'Escape') closeQRModal();
     });
 
-    // ========== Pricing Toggle (月付/年付 8折) ==========
+    // ========== Pricing Toggle (月付/年付/两年/三年) ==========
     (function() {
       const toggleBtns = document.querySelectorAll('.billing-toggle-btn');
       const cards = document.querySelectorAll('.pricing-card[data-monthly]');
-      const DISCOUNT = 0.8;
 
       function formatCurrency(num) {
         return num.toLocaleString('zh-CN');
       }
 
       function updatePrices(billing) {
-        const isYearly = billing === 'yearly';
-
         cards.forEach(function(card) {
           const monthly = parseInt(card.dataset.monthly, 10);
           const valueEl = card.querySelector('[data-price-value]');
@@ -2277,31 +2274,51 @@
 
           if (!valueEl) return;
 
-          if (isYearly) {
-            const yearlyTotal = Math.round(monthly * 12 * DISCOUNT);
-            const equivalentMonthly = Math.round(monthly * DISCOUNT);
-
-            valueEl.textContent = formatCurrency(equivalentMonthly);
-            if (unitEl) unitEl.textContent = '/ 月';
-            if (originalEl) {
-              originalEl.textContent = '原价 ¥' + formatCurrency(monthly) + '/月';
-              originalEl.classList.remove('hidden');
-            }
-            if (savingsEl) {
-              const saved = monthly * 12 - yearlyTotal;
-              savingsEl.innerHTML = '<span class="material-symbols-outlined text-[13px]">savings</span> 年付立省 ¥' + formatCurrency(saved);
-              savingsEl.classList.remove('hidden');
-            }
-            if (totalEl) {
-              totalEl.textContent = '按年支付 ¥' + formatCurrency(yearlyTotal) + '/年';
-              totalEl.classList.remove('hidden');
-            }
-          } else {
+          if (billing === 'monthly') {
             valueEl.textContent = formatCurrency(monthly);
             if (unitEl) unitEl.textContent = '/ 月';
             if (originalEl) originalEl.classList.add('hidden');
             if (savingsEl) savingsEl.classList.add('hidden');
             if (totalEl) totalEl.classList.add('hidden');
+            return;
+          }
+
+          const yearlyOriginal = monthly * 12;
+          let total, equivalentMonthly, periodMonths, label, savingsLabel;
+
+          if (billing === 'yearly') {
+            total = monthly * 10;
+            periodMonths = 12;
+            label = '按年支付';
+            savingsLabel = '年付立省';
+          } else if (billing === 'two-year') {
+            total = monthly * 10 * 2 * 0.8;
+            periodMonths = 24;
+            label = '一次买2年';
+            savingsLabel = '一次买2年立省';
+          } else if (billing === 'three-year') {
+            total = monthly * 10 * 3 * 0.7;
+            periodMonths = 36;
+            label = '一次买3年';
+            savingsLabel = '一次买3年立省';
+          }
+
+          equivalentMonthly = Math.round(total / periodMonths);
+          const saved = Math.round(yearlyOriginal * (periodMonths / 12) - total);
+
+          valueEl.textContent = formatCurrency(equivalentMonthly);
+          if (unitEl) unitEl.textContent = '/ 月';
+          if (originalEl) {
+            originalEl.textContent = '原价 ¥' + formatCurrency(monthly) + '/月';
+            originalEl.classList.remove('hidden');
+          }
+          if (savingsEl) {
+            savingsEl.innerHTML = '<span class="material-symbols-outlined text-[13px]">savings</span> ' + savingsLabel + ' ¥' + formatCurrency(saved);
+            savingsEl.classList.remove('hidden');
+          }
+          if (totalEl) {
+            totalEl.textContent = label + ' ¥' + formatCurrency(Math.round(total));
+            totalEl.classList.remove('hidden');
           }
         });
       }
