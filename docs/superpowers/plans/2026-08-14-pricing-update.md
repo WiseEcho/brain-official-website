@@ -13,7 +13,8 @@
 - 必须使用 Docker 本地环境验证（`docker compose up -d web`，访问 `http://localhost:18080/pricing.html`）
 - 若新增 Tailwind class，必须按 `tailwind.config.js` 头部注释重新生成 `css/tailwind.css`
 - 文案改动需保持 `pricing.html` 内部一致（不要求同步 `docs/design-demo.html`）
-- 企业档（企业标准版/专业版/旗舰版）改为直接展示价格，不再使用「获取专属报价」
+- 前三个套餐（团队基础版/标准版/专业版）展示真实月付/年付/2年/3年价格
+- 企业档（企业标准版/专业版/旗舰版）保留「获取专属报价」按钮，不展示具体价格
 - 提交遵循 conventional commits：`feat/fix/docs: 描述`
 
 ---
@@ -71,6 +72,8 @@
 
 - [ ] **Step 1: 替换团队专业版 (Featured) 卡片**
 
+  配额列表只保留新方案明确的 3 项：企业内部席位、本地最大存储空间、广告账户。
+
   ```html
   <!-- 团队专业版 (Featured) -->
   <div class="pricing-card featured order-first md:order-none" data-monthly="4800">
@@ -95,9 +98,7 @@
       <div class="pricing-card-divider"></div>
       <ul class="pricing-card-quota-list">
         <li><span class="quota-label">企业内部席位</span><span class="quota-value">30个</span></li>
-        <li><span class="quota-label">外部协作席位</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">本地最大存储空间</span><span class="quota-value">30T</span></li>
-        <li><span class="quota-label">项目数量</span><span class="quota-value">1000个</span></li>
         <li><span class="quota-label">广告账户</span><span class="quota-value">30个</span></li>
       </ul>
       <button class="pricing-card-btn" onclick="openQRModal()">立即咨询</button>
@@ -130,9 +131,7 @@
       <div class="pricing-card-divider"></div>
       <ul class="pricing-card-quota-list">
         <li><span class="quota-label">企业内部席位</span><span class="quota-value">10个</span></li>
-        <li><span class="quota-label">外部协作席位</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">本地最大存储空间</span><span class="quota-value">10T</span></li>
-        <li><span class="quota-label">项目数量</span><span class="quota-value">100个</span></li>
         <li><span class="quota-label">广告账户</span><span class="quota-value">10个</span></li>
       </ul>
       <button class="pricing-card-btn" onclick="openQRModal()">立即咨询</button>
@@ -165,9 +164,7 @@
       <div class="pricing-card-divider"></div>
       <ul class="pricing-card-quota-list">
         <li><span class="quota-label">企业内部席位</span><span class="quota-value">20个</span></li>
-        <li><span class="quota-label">外部协作席位</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">本地最大存储空间</span><span class="quota-value">20T</span></li>
-        <li><span class="quota-label">项目数量</span><span class="quota-value">500个</span></li>
         <li><span class="quota-label">广告账户</span><span class="quota-value">20个</span></li>
       </ul>
       <button class="pricing-card-btn" onclick="openQRModal()">立即咨询</button>
@@ -175,34 +172,32 @@
   </div>
   ```
 
-- [ ] **Step 4: 替换企业标准版卡片（改为直接展示价格）**
+- [ ] **Step 4: 替换企业标准版卡片（保留「获取专属报价」）**
+
+  企业档不展示具体价格，使用「获取专属报价」按钮，因此不带 `data-monthly` 属性。
 
   ```html
   <!-- 企业标准版 -->
-  <div class="pricing-card" data-monthly="7800">
+  <div class="pricing-card">
     <div class="pricing-card-header-bar"></div>
     <div class="pricing-card-body">
       <h3 class="pricing-card-name">企业标准版</h3>
       <div class="pricing-card-target">适用于中小型企业</div>
       <div class="pricing-card-price">
-        <div class="price-row">
-          <span class="price-currency">¥</span>
-          <span class="price-value" data-price-value="">7,800</span>
-          <span class="price-unit">/ 月</span>
+        <div class="price-row price-row-enterprise">
+          <span class="relative inline-flex items-center justify-center px-4 py-2 rounded-full bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors shadow-sm cursor-pointer whitespace-nowrap" onclick="openQRModal()" onmouseenter="showEnterpriseQR(this)" onmouseleave="hideEnterpriseQR(this)">
+            获取专属报价
+            <span class="enterprise-qr-tooltip absolute left-1/2 -translate-x-1/2 top-full mt-2 hidden w-44 bg-white rounded-xl shadow-xl p-3 text-center z-20 pointer-events-none">
+              <img alt="扫码咨询" class="w-full h-auto rounded-lg" src="images/qrcode-consultant.png"/>
+              <span class="block text-xs text-gray-500 mt-2">扫码添加顾问</span>
+            </span>
+          </span>
         </div>
-        <div class="price-original hidden" data-price-original="">原价 ¥7,800/月</div>
-        <div class="price-savings hidden" data-price-savings="">
-          <span class="material-symbols-outlined text-[13px]">savings</span>
-          年付立省 ¥15,600
-        </div>
-        <div class="price-yearly-total hidden" data-price-yearly-total="">按年支付 ¥78,000/年</div>
       </div>
       <div class="pricing-card-divider"></div>
       <ul class="pricing-card-quota-list">
         <li><span class="quota-label">企业内部席位</span><span class="quota-value">50个</span></li>
-        <li><span class="quota-label">外部协作席位</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">本地最大存储空间</span><span class="quota-value">50T</span></li>
-        <li><span class="quota-label">项目数量</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">广告账户</span><span class="quota-value">50个</span></li>
       </ul>
       <button class="pricing-card-btn" onclick="openQRModal()">立即咨询</button>
@@ -210,34 +205,32 @@
   </div>
   ```
 
-- [ ] **Step 5: 替换企业专业版卡片（改为直接展示价格）**
+- [ ] **Step 5: 替换企业专业版卡片（保留「获取专属报价」）**
+
+  企业档不展示具体价格，使用「获取专属报价」按钮，因此不带 `data-monthly` 属性。
 
   ```html
   <!-- 企业专业版 -->
-  <div class="pricing-card" data-monthly="14800">
+  <div class="pricing-card">
     <div class="pricing-card-header-bar"></div>
     <div class="pricing-card-body">
       <h3 class="pricing-card-name">企业专业版</h3>
       <div class="pricing-card-target">适用于大型企业</div>
       <div class="pricing-card-price">
-        <div class="price-row">
-          <span class="price-currency">¥</span>
-          <span class="price-value" data-price-value="">14,800</span>
-          <span class="price-unit">/ 月</span>
+        <div class="price-row price-row-enterprise">
+          <span class="relative inline-flex items-center justify-center px-4 py-2 rounded-full bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors shadow-sm cursor-pointer whitespace-nowrap" onclick="openQRModal()" onmouseenter="showEnterpriseQR(this)" onmouseleave="hideEnterpriseQR(this)">
+            获取专属报价
+            <span class="enterprise-qr-tooltip absolute left-1/2 -translate-x-1/2 top-full mt-2 hidden w-44 bg-white rounded-xl shadow-xl p-3 text-center z-20 pointer-events-none">
+              <img alt="扫码咨询" class="w-full h-auto rounded-lg" src="images/qrcode-consultant.png"/>
+              <span class="block text-xs text-gray-500 mt-2">扫码添加顾问</span>
+            </span>
+          </span>
         </div>
-        <div class="price-original hidden" data-price-original="">原价 ¥14,800/月</div>
-        <div class="price-savings hidden" data-price-savings="">
-          <span class="material-symbols-outlined text-[13px]">savings</span>
-          年付立省 ¥29,600
-        </div>
-        <div class="price-yearly-total hidden" data-price-yearly-total="">按年支付 ¥148,000/年</div>
       </div>
       <div class="pricing-card-divider"></div>
       <ul class="pricing-card-quota-list">
         <li><span class="quota-label">企业内部席位</span><span class="quota-value">100个</span></li>
-        <li><span class="quota-label">外部协作席位</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">本地最大存储空间</span><span class="quota-value">100T</span></li>
-        <li><span class="quota-label">项目数量</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">广告账户</span><span class="quota-value">100个</span></li>
       </ul>
       <button class="pricing-card-btn" onclick="openQRModal()">立即咨询</button>
@@ -245,34 +238,30 @@
   </div>
   ```
 
-- [ ] **Step 6: 替换企业旗舰版卡片（改为直接展示价格）**
+- [ ] **Step 6: 替换企业旗舰版卡片（保留「获取专属报价」）**
 
   ```html
   <!-- 企业旗舰版 -->
-  <div class="pricing-card" data-monthly="28000">
+  <div class="pricing-card">
     <div class="pricing-card-header-bar"></div>
     <div class="pricing-card-body">
       <h3 class="pricing-card-name">企业旗舰版</h3>
       <div class="pricing-card-target">适用于集团/多品牌</div>
       <div class="pricing-card-price">
-        <div class="price-row">
-          <span class="price-currency">¥</span>
-          <span class="price-value" data-price-value="">28,000</span>
-          <span class="price-unit">/ 月</span>
+        <div class="price-row price-row-enterprise">
+          <span class="relative inline-flex items-center justify-center px-4 py-2 rounded-full bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors shadow-sm cursor-pointer whitespace-nowrap" onclick="openQRModal()" onmouseenter="showEnterpriseQR(this)" onmouseleave="hideEnterpriseQR(this)">
+            获取专属报价
+            <span class="enterprise-qr-tooltip absolute left-1/2 -translate-x-1/2 top-full mt-2 hidden w-44 bg-white rounded-xl shadow-xl p-3 text-center z-20 pointer-events-none">
+              <img alt="扫码咨询" class="w-full h-auto rounded-lg" src="images/qrcode-consultant.png"/>
+              <span class="block text-xs text-gray-500 mt-2">扫码添加顾问</span>
+            </span>
+          </span>
         </div>
-        <div class="price-original hidden" data-price-original="">原价 ¥28,000/月</div>
-        <div class="price-savings hidden" data-price-savings="">
-          <span class="material-symbols-outlined text-[13px]">savings</span>
-          年付立省 ¥56,000
-        </div>
-        <div class="price-yearly-total hidden" data-price-yearly-total="">按年支付 ¥280,000/年</div>
       </div>
       <div class="pricing-card-divider"></div>
       <ul class="pricing-card-quota-list">
         <li><span class="quota-label">企业内部席位</span><span class="quota-value">不限</span></li>
-        <li><span class="quota-label">外部协作席位</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">本地最大存储空间</span><span class="quota-value">不限</span></li>
-        <li><span class="quota-label">项目数量</span><span class="quota-value">不限</span></li>
         <li><span class="quota-label">广告账户</span><span class="quota-value">不限</span></li>
       </ul>
       <button class="pricing-card-btn" onclick="openQRModal()">立即咨询</button>
@@ -282,7 +271,7 @@
 
 - [ ] **Step 7: 验证卡片显示**
 
-  在浏览器中确认 6 个卡片名称、价格、配额正确，企业档不再出现「获取专属报价」按钮。
+  在浏览器中确认 6 个卡片名称、配额正确：前三个套餐（团队基础版/标准版/专业版）展示真实价格和周期切换效果，后三个企业档（企业标准版/专业版/旗舰版）展示「获取专属报价」按钮。
 
 ---
 
@@ -297,7 +286,7 @@
 
 - [ ] **Step 1: 替换 updatePrices 函数逻辑**
 
-  将现有逻辑替换为支持 4 周期的逻辑：
+  将现有逻辑替换为支持 4 周期的逻辑。注意：企业档卡片不带 `data-monthly`，因此不会被 `updatePrices` 处理。
 
   ```javascript
   function updatePrices(billing) {
