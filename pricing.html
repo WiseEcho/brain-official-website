@@ -137,6 +137,7 @@
     .billing-toggle {
       display: inline-flex;
       align-items: center;
+      flex-wrap: wrap;
       background: #F3F4F6;
       border-radius: 100px;
       padding: 4px;
@@ -1086,6 +1087,7 @@
     .billing-toggle {
       display: inline-flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 12px;
       background: #F3F4F6;
       padding: 6px;
@@ -1216,7 +1218,7 @@
       "name": "如何选择适合我的方案？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "建议根据团队规模和业务需求选择。5人以下小团队选入门版即可满足日常内容生产和投放需求；20人左右的成长型团队推荐专业版，可解锁更多自动化和数据能力；50人以上的企业团队建议联系顾问定制企业版，获得专属部署和对接服务。"
+        "text": "建议根据团队规模和业务需求选择。10人以下小团队选团队基础版即可满足日常内容生产和投放需求；30人左右的成长型团队推荐团队专业版，可解锁更多自动化和数据能力；100人以上的企业团队建议联系顾问定制企业专业版，获得专属部署和对接服务。"
       }
     },
     {
@@ -2034,7 +2036,7 @@
 <span class="material-symbols-outlined faq-icon">expand_more</span>
 </summary>
 <div class="faq-content">
-              建议根据团队规模和业务需求选择：5人以下小团队选入门版即可满足日常内容生产和投放需求；20人左右的成长型团队推荐专业版，可获得项目协同和NAS部署等进阶能力；50人以上的大型团队或需要私有化部署的企业，建议选择企业版获取定制化服务。
+              建议根据团队规模和业务需求选择：10人以下小团队选团队基础版即可满足日常内容生产和投放需求；30人左右的成长型团队推荐团队专业版，可获得项目协同和NAS部署等进阶能力；100人以上的大型团队或需要私有化部署的企业，建议选择企业专业版获取定制化服务。
             </div>
 </details>
 <!-- FAQ 2 -->
@@ -2302,6 +2304,13 @@
             periodMonths = 36;
             label = '一次买3年';
             savingsLabel = '一次买3年立省';
+          } else {
+            valueEl.textContent = formatCurrency(monthly);
+            if (unitEl) unitEl.textContent = '/ 月';
+            if (originalEl) originalEl.classList.add('hidden');
+            if (savingsEl) savingsEl.classList.add('hidden');
+            if (totalEl) totalEl.classList.add('hidden');
+            return;
           }
 
           equivalentMonthly = Math.round(total / periodMonths);
