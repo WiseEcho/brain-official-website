@@ -416,6 +416,7 @@ a, button {
 }
 .testimonial-card {
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* 移动端菜单滑入动画 */

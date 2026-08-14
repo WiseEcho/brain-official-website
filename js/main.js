@@ -119,25 +119,70 @@
      客户评价轮播
      ======================================== */
 
-  let testimonialScrollAmount = 0;
+  function getVisibleTestimonialCards() {
+    if (!els.testimonialTrack) return [];
+    return Array.from(els.testimonialTrack.querySelectorAll('.testimonial-card')).filter(function (card) {
+      return card.offsetWidth > 0 && card.offsetParent !== null;
+    });
+  }
 
-  function getTestimonialCardWidth() {
-    if (!els.testimonialTrack) return 0;
-    const card = els.testimonialTrack.querySelector('.testimonial-card');
-    return card ? card.offsetWidth + 24 : 304; // 24px = gap-6
+  function getVisibleTestimonialIndex() {
+    const cards = getVisibleTestimonialCards();
+    if (!cards.length) return 0;
+
+    const trackLeft = els.testimonialTrack.scrollLeft;
+    const trackCenter = trackLeft + els.testimonialTrack.clientWidth / 2;
+
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    cards.forEach(function (card, index) {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(cardCenter - trackCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    return closestIndex;
+  }
+
+  function scrollTestimonialTo(index) {
+    if (!els.testimonialTrack) return;
+    const cards = getVisibleTestimonialCards();
+    const target = cards[index];
+    if (!target) return;
+
+    // 真机上 scroll-snap 会和 smooth scroll 冲突产生空白，
+    // 点击按钮时先临时禁用 snap，只进行水平滚动，结束后再恢复。
+    const track = els.testimonialTrack;
+    track.style.scrollSnapType = 'none';
+
+    function restoreSnap() {
+      track.style.scrollSnapType = '';
+      track.removeEventListener('scrollend', restoreSnap);
+    }
+
+    track.addEventListener('scrollend', restoreSnap);
+    // scrollend 兼容性兜底：500ms 后强制恢复
+    setTimeout(restoreSnap, 500);
+
+    track.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
   }
 
   if (els.testimonialPrev && els.testimonialTrack) {
     els.testimonialPrev.addEventListener('click', function () {
-      const cardWidth = getTestimonialCardWidth();
-      els.testimonialTrack.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      const index = getVisibleTestimonialIndex();
+      scrollTestimonialTo(Math.max(0, index - 1));
     });
   }
 
   if (els.testimonialNext && els.testimonialTrack) {
     els.testimonialNext.addEventListener('click', function () {
-      const cardWidth = getTestimonialCardWidth();
-      els.testimonialTrack.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      const cards = getVisibleTestimonialCards();
+      const index = getVisibleTestimonialIndex();
+      scrollTestimonialTo(Math.min(cards.length - 1, index + 1));
     });
   }
 
