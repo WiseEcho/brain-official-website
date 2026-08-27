@@ -380,7 +380,7 @@
         trialForm.classList.add('hidden');
         if (successEl) successEl.classList.remove('hidden');
       } else {
-        showError('提交失败，请稍后重试；也可直接拨打售前电话 18008627166 联系我们。');
+        showError('提交失败，请稍后重试；也可直接拨打售前电话 13477092062 联系我们。');
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnHtml;
